@@ -77,8 +77,6 @@ class App {
 
 class store {
 
-
-   
     
     static getBooks(){
         let books;
@@ -180,4 +178,31 @@ document.addEventListener('DOMContentLoaded', function(){
     })
 
 });  
+
+
+
+function Person(first,last,age,gender,hobby,passion){
+
+    this.name = {
+        firstName : first,
+        lastName : last 
+    }
+    this.age = age;
+    this.gender = gender;
+    this.interests = {
+        hobbies : hobby,
+         passion : passion
+    };
+    this.myProfile = () => {
+        console.log(this.name.firstName + ' ' + this.name.lastName + ' ' + this.age +' ' + 'years old'+ ' ' + this.gender + ' ' + 'likes' + ' ' + this.interests.hobbies + ' ' + this.interests.passion);
+    }
+    
+    
+}
+
+    let person1 = new Person('Leo','Ronaldo', '25','male','coding','singing')
+    let person2 = new Person('shade','afemuwa', '32','female','fashion','writing')
+    person1.myProfile();
+    person2.myProfile();
+   
 

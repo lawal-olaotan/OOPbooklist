@@ -1,0 +1,29 @@
+{
+  "name": "oopbooklist",
+  "version": "1.0.0",
+  "description": "a book list for readers",
+  "main": "index.js",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0",
+    "express-session": "^1.17.1",
+    "sass": "^1.26.8",
+    "sass-loader": "^8.0.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/manlikleo/OOPbooklist.git"
+  },
+  "author": "manlikleo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/manlikleo/OOPbooklist/issues"
+  },
+  "homepage": "https://github.com/manlikleo/OOPbooklist#readme"
+}
