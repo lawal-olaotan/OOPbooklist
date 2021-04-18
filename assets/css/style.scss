@@ -1,3 +1,221 @@
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
+
+$primary: #0B959E;
+$book-keeperbg: #0B959E;
+$seccolor : #0b949ee7;
+$hovercolor:#093033cb;
+$neutral: #fff;
+
+
+$navbar-dark-brand-color:$book-keeperbg;
+$navbar-dark-color:$book-keeperbg;
+$navbar-dark-brand-hover-color:$book-keeperbg;
+
+
+.Primarycolor{
+    color: $book-keeperbg;
+}
+
+.bd-navbar{
+    padding: .4rem 0;
+    background-color: $book-keeperbg;
+}
+
+.notification{
+   color:$neutral;
+   margin: 0 !important;
+   font-size: .9rem;
+}
+
+.btn-join{
+    font-weight: 300;
+    color: $neutral;
+    border-color: $neutral;
+}
+
+.sec-navbar{
+    padding: .6rem 0;
+    background-color: $neutral;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+}
+
+.logo{
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: $book-keeperbg; 
+    padding: .5rem 0;
+
+    &:hover{
+        color: $hovercolor;
+    }
+}
+
+
+
+.navbar-dark .navbar-nav .nav-link{
+    color: $book-keeperbg;
+    &:hover,&:focus{
+        color: $hovercolor !important;
+    }
+    
+}
+
+.navbar-dark .navbar-toggler {
+    color: $book-keeperbg;
+    border-color: $book-keeperbg;
+    padding: 2px 4px;
+    position: absolute;
+    right: 1pc;
+    top: 1pc;
+
+
+    &:focus{
+        border: 0px solid $book-keeperbg;
+    }
+  
+}
+
+.hero{
+    background-image: url("../Book-keeper/snow-4726119_1920.jpg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+    @include media-breakpoint-down(sm){
+        height: 50vh;
+    }
+    @include media-breakpoint-up(md){
+        height: 75vh;
+    }
+    @include media-breakpoint-up(xxl){
+        height: 70vh;
+    }
+
+    &__content{
+        width: 60%;
+        text-align: center;
+
+        @include media-breakpoint-down(sm){
+            width: 100%;
+        }
+    }
+
+    &__title{
+        font-size: 3.5rem;
+        font-weight: 650;
+        color: $book-keeperbg;
+
+        @include media-breakpoint-down(sm){
+            font-size: 2rem;
+        }
+
+    }
+
+    &__text{
+        font-size: 1.2rem;
+        font-weight: 400;
+        color: $book-keeperbg;
+
+        @include media-breakpoint-down(sm){
+            font-size: .8rem;
+        }
+    }
+}
+
+
+.bok-btn{
+    background-color: $book-keeperbg;
+    color: $neutral;
+    font-weight: 400;
+
+    &:hover{
+        color: $neutral;
+        background-color: $hovercolor;
+    }
+}
+
+.fontplay{
+
+    @include media-breakpoint-down(sm){
+        font-size: 1rem;
+    }
+
+}
+
+.text-link{
+    text-decoration: none;
+    color: $hovercolor;
+}
+
+.cardcontainer{
+    overflow-x:hidden;
+    flex-wrap:nowrap;
+}
+
+
+
+.bookbody{
+    width: 23% !important;
+}
+
+.bookauthor{
+    font-size: .8rem;
+    margin-bottom: .5rem;
+}
+
+.bookpara{
+    font-size: .5rem;
+}
+.card-pic{
+    width: 100%;
+    height: 200px;
+    max-width: 400px;
+    object-fit: cover;
+    border-radius: .25rem .25rem 0 0px;
+    -webkit-border-radius: .25rem .25rem 0 0px;
+    -moz-border-radius: .25rem .25rem 0 0px;
+    -ms-border-radius: .25rem .25rem 0 0px;
+    -o-border-radius: .25rem .25rem 0 0px;
+    border: none;
+
+    
+}
+
+.booktitle{
+    font-size: .8rem;
+}
+
+.placeholder{
+    transition: .5s ease;
+    -webkit-transition: .5s ease;
+    -moz-transition: .5s ease;
+    -ms-transition: .5s ease;
+    -o-transition: .5s ease;
+    opacity: 0;
+    top: 50%;
+    left: 50%;
+    position:absolute;
+    transform:translate(-50%,-50%);
+}
+
+.bookcard{
+
+    &:hover{
+        .card-pic{
+            opacity: 0.3;
+        }
+        .placeholder{
+            opacity: 1;
+            background-color: #0b949e77;
+        }
+    }
+}
+
+#viewall{
+    padding: .7rem 1.2rem;
+    background: $book-keeperbg;
+    color: $neutral;
+}

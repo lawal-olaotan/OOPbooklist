@@ -7,7 +7,7 @@ const {initialElements} = funs;
 
 router.get("/",(req,res) => {
 
-    const elements = [...initialElements];
+    const elements = [...initialElements,'../node_modules/bootstrap/dist/js/bootstrap.min.js','https://unpkg.com/@popperjs/core@2'];
 
     const meta = funs.meta({
         description: "",
@@ -22,6 +22,8 @@ router.get("/",(req,res) => {
 
     })
 });
+
+
 
 
 module.exports = router;
