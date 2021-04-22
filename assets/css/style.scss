@@ -1,5 +1,9 @@
 
 @import "../../node_modules/bootstrap/scss/bootstrap";
+// @import "../../node_modules/bootstrap/scss/navbar";
+// @import "../../node_modules/bootstrap/scss/nav";
+// @import "../../node_modules/bootstrap/scss/variables";
+// @import "../../node_modules/bootstrap/scss/card";
 
 
 $primary: #0B959E;
@@ -150,15 +154,32 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
     color: $hovercolor;
 }
 
-.cardcontainer{
+.wrapper{
     overflow-x:hidden;
-    flex-wrap:nowrap;
+    height: 100%;
+    
 }
 
-
+.cardcontainer{
+    flex-wrap:nowrap;
+    width: 100%;
+}
 
 .bookbody{
+    display: flex !important;
     width: 23% !important;
+
+    @include media-breakpoint-down(sm){
+        width: 84% !important;
+    }
+    @include media-breakpoint-up(md){
+        width: 40% !important;
+    }
+    @include media-breakpoint-up(lg){
+        width: 23% !important;
+    }
+
+
 }
 
 .bookauthor{
@@ -215,7 +236,110 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 }
 
 #viewall{
-    padding: .7rem 1.2rem;
+    padding: .8rem 2rem;
     background: $book-keeperbg;
     color: $neutral;
 }
+
+.btnposition{
+    top: 9pc;
+}
+
+.carousel-cell{
+    margin-right: 2rem;
+}
+
+.works{
+    width: 50%;
+    color: $book-keeperbg;
+
+    @include media-breakpoint-down(sm){
+        width: 100%;
+    }
+
+    &__text{
+        font-size: 2rem;
+    }
+
+    &__img{
+        width:3rem;
+        height: 3rem; 
+    }
+    &__pic{
+        width:100%;
+        height: 100%;
+    }
+
+    &__cardtitle{
+        color: $book-keeperbg;
+    }
+
+    &__cardtext{
+        color: #706B6B;
+    }
+    &__cta{
+        background-color: $book-keeperbg;
+        color: $neutral;
+
+        &:hover{
+            background-color: $hovercolor;
+            color: $neutral;
+        }
+    }
+}
+
+.review{
+
+    color: #706B6B;
+
+    &__img{
+        max-height: 40px;
+        max-width: 40px;
+       
+    }
+    &__pic{
+        @extend.works__pic;
+        border-radius: 100%;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -ms-border-radius: 100%;
+        -o-border-radius: 100%;
+        object-fit: cover;
+    }
+
+    &__location{
+        font-size: .7rem;
+    }
+
+    &__checked{
+        color: orange;
+    }
+    &__unchecked{
+        color: transparent;
+    }
+
+    &__text{
+        font-size: .7rem;
+    }
+
+}
+
+
+/* position dots up a bit */
+.flickity-page-dots {
+    bottom: -22px;
+  }
+  /* dots are lines */
+  .flickity-page-dots .dot {
+    height: 4px;
+    width: 40px;
+    margin: 0;
+    border-radius: 0;
+  }
+
+
+  .cell-style{
+    @include media-breakpoint-down(sm){
+        width: 300px;
+    }  
+  }
