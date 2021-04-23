@@ -17,6 +17,9 @@ $navbar-dark-brand-color:$book-keeperbg;
 $navbar-dark-color:$book-keeperbg;
 $navbar-dark-brand-hover-color:$book-keeperbg;
 
+.body{
+    position: relative;
+}
 
 .Primarycolor{
     color: $book-keeperbg;
@@ -37,12 +40,23 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
     font-weight: 300;
     color: $neutral;
     border-color: $neutral;
+    &:hover{
+        color: #FDFDFD;
+    }
 }
 
 .sec-navbar{
     padding: .6rem 0;
-    background-color: $neutral;
+    background-color:$neutral;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+    position:sticky;
+    top: 0;
+    z-index: 1000;
+    transition: 0.2s ease-in-out;
+    -webkit-transition: 0.2s ease-in-out;
+    -moz-transition: 0.2s ease-in-out;
+    -ms-transition: 0.2s ease-in-out;
+    -o-transition: 0.2s ease-in-out;
 }
 
 .logo{
@@ -112,8 +126,15 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
         font-weight: 650;
         color: $book-keeperbg;
 
+        @include media-breakpoint-up(xl){
+            font-size: 3rem;
+        }
+
         @include media-breakpoint-down(sm){
             font-size: 2rem;
+        }
+        @include media-breakpoint-down(lg){
+            font-size: 1.9rem;
         }
 
     }
@@ -125,6 +146,9 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 
         @include media-breakpoint-down(sm){
             font-size: .8rem;
+        }
+        @include media-breakpoint-down(lg){
+            font-size: 1rem;
         }
     }
 }
@@ -152,6 +176,9 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 .text-link{
     text-decoration: none;
     color: $hovercolor;
+    &:hover{
+        color: $book-keeperbg;
+    }
 }
 
 .wrapper{
@@ -342,4 +369,87 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
     @include media-breakpoint-down(sm){
         width: 300px;
     }  
+  }
+
+  .bookfooter{
+      background-color: #88d7dd44;
+      margin-top: 5rem;
+
+      &__firstfoot{
+          margin: 4rem 0;
+
+      }
+      &__links{
+          list-style: none;
+
+          li a{
+              color: #706B6B; 
+          }
+      }
+
+      &__sections{
+          width: fit-content;
+          @include media-breakpoint-down(lg){
+             margin:0;
+             margin-bottom: 2rem;
+        } 
+          @include media-breakpoint-up(xl){
+            margin-right: 2rem;
+        } 
+       
+         
+      }
+
+      &__text{
+          width: 45%;
+          font-size: .8rem;
+
+          @include media-breakpoint-down(sm){
+            width: 100%;
+        }  
+      }
+
+      &__subsec{
+            @include media-breakpoint-down(sm){
+                text-align: center;
+                flex-direction: column;
+            } 
+            @include media-breakpoint-down(md){
+                text-align: center;
+                flex-direction: column;
+            } 
+      }
+  }
+
+  #footerlogo{
+    @include media-breakpoint-down(sm){
+        display: none;
+    } 
+  }
+
+  .scrollbag{
+      background-color: $book-keeperbg;
+      color: $neutral !important;
+
+      .nav-link{
+        color: $neutral !important; 
+        &:hover{
+            color: #FDFDFD !important;
+        }
+
+        }
+
+    .navbar-toggler{
+        color: $neutral;
+        border-color: $neutral;
+    }
+  }
+
+  #booksec{
+      position: relative;
+      padding: 5rem 0;
+  }
+
+  .navbar-dark .navbar-nav .nav-link.active{
+    color: $book-keeperbg;
   }
