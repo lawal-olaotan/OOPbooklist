@@ -11645,6 +11645,12 @@ fieldset:disabled .btn {
   height: 100%;
 }
 
+@media (max-width: 575.98px) {
+  .wrapper {
+    margin-left: 1rem;
+  }
+}
+
 .cardcontainer {
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
@@ -11661,6 +11667,7 @@ fieldset:disabled .btn {
 @media (max-width: 575.98px) {
   .bookbody {
     width: 84% !important;
+    max-height: 324px;
   }
 }
 
@@ -11701,6 +11708,12 @@ fieldset:disabled .btn {
 
 .booktitle {
   font-size: .8rem;
+}
+
+@media (max-width: 575.98px) {
+  .booktitle {
+    font-size: .7rem;
+  }
 }
 
 .placeholder {
@@ -11935,5 +11948,11 @@ fieldset:disabled .btn {
 
 .navbar-dark .navbar-nav .nav-link.active {
   color: #0B959E;
+}
+
+.flickity-slider {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
 }
 /*# sourceMappingURL=style.css.map */

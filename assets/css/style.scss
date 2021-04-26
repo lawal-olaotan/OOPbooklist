@@ -184,6 +184,9 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 .wrapper{
     overflow-x:hidden;
     height: 100%;
+    @include media-breakpoint-down(sm){
+        margin-left: 1rem;
+    }
     
 }
 
@@ -198,6 +201,7 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 
     @include media-breakpoint-down(sm){
         width: 84% !important;
+        max-height: 324px;
     }
     @include media-breakpoint-up(md){
         width: 40% !important;
@@ -234,6 +238,11 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 
 .booktitle{
     font-size: .8rem;
+
+    @include media-breakpoint-down(sm){
+        font-size: .7rem;
+    }
+
 }
 
 .placeholder{
@@ -452,4 +461,9 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 
   .navbar-dark .navbar-nav .nav-link.active{
     color: $book-keeperbg;
+  }
+
+
+  .flickity-slider{
+      display: flex;
   }
