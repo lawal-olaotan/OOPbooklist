@@ -1,4 +1,5 @@
 
+
 const nextBtn = document.querySelector('#nextbtn'),
  mobileView = window.matchMedia("(max-width:450px)"),
  reviewcarol = document.querySelector('#review-carousel'),
@@ -7,6 +8,9 @@ const nextBtn = document.querySelector('#nextbtn'),
 
 
  let flicky;
+
+ let coverimgs;
+
 
 //getting keys for Bestselling Apis 
 // const NY = config.NYT_KEY;
@@ -24,8 +28,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
         return `<div class="bookbody">
                             <div class="card bookcard carousel-cell">
-                                <div class="card-img-top position-relative">
-                                        <img src="../assets/Book-keeper/merlin_182628279_659e4566-75fd-4237-b819-43bb0aa82804-articleLarge.jpeg" class="card-pic img-thumbnail p-0 border-0" src="" alt="card image">
+                                <div  class="card-img-top position-relative">
+                                        <img id="${data.book_details[0].author}" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/387928/book%20placeholder.png" class="card-pic img-thumbnail p-0 border-0"  alt="card image">
                                         <div class="placeholder d-flex justify-content-center align-items-center w-100 h-100">
                                             <a class="btn bok-btn btn-sm"id="homeadd" href="#">Add to Books</a>
                                         </div>
@@ -41,27 +45,78 @@ document.addEventListener('DOMContentLoaded', function(){
                 </div>`; 
     };
 
-    
+
 
     axios.get('https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=yHo5Zw1Leq9PI2WacGtwhmmRNWaUdWEM')
     .then(data =>{ 
 
-       let bookdata = data.data.results;
+
+        bookdata = data.data.results;
         data = bookdata.slice(0,5);
+        console.log(data);
        if(data.length){
            carol.classList.add('is-draggable');
-            for(let label of data){
-                carol.insertAdjacentHTML("afterbegin",cardTemp(label));
-            }
+
+        //    data.forEach(label => {
+
+        //         carol.insertAdjacentHTML("afterbegin",cardTemp(label));
+        //         let bookrank = label.rank
+        //         let authorkey = label.book_details[0].author;
+        //         let titleKey = label.book_details[0].title;
+        //         getKeys(bookrank,authorkey,titleKey); 
+        //    });
+
+           data.map(label => {
+               
+            carol.insertAdjacentHTML("afterbegin",cardTemp(label));
+            let bookrank = label.rank
+            let authorkey = label.book_details[0].author;
+            let titleKey = label.book_details[0].title;
+            getKeys(bookrank,authorkey,titleKey); 
+
+           })
+
+            // for(let label of data){
+
+            //     carol.insertAdjacentHTML("afterbegin",cardTemp(label));
+            //     let bookrank = label.rank
+            //     let authorkey = label.book_details[0].author;
+            //     let titleKey = label.book_details[0].title;
+            //     getKeys(bookrank,authorkey,titleKey);        
+            // }
        }
 
         flick(carol,false,true,false,true);
+
+         function getKeys(rank,author,title){
+
+            axios.get('https://www.googleapis.com/books/v1/volumes?q='+ title + "+inauthor:"+author+"&key="+"AIzaSyC1fXjcENg0nomgwn8cDCYxaTBCS2dUSlk")
+            .then(data => {
+                let picdata = data.data.items[0].volumeInfo.imageLinks.thumbnail;
+                    picdata = picdata.replace(/^http:\/\//i, 'https://');
+
+                    coverimgs= document.querySelectorAll('.card-pic');
+                    
+                    for(coverimg of coverimgs){
+                        if(author === coverimg.id){
+                            coverimg.setAttribute("src",picdata);
+                        }
+                    }
+
+            })
+            .catch(error=>{
+                console.log(error)
+            })
+        
+        
+         }
+
+        
 
     })
     .catch(error=>{
         console.log(error)
     })
-
 
     // navbar scroll effect
     window.addEventListener('scroll',scrollHeader);
@@ -83,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 
 
-
 // header scroll options
 function scrollHeader(){
     const navbar = document.querySelector('#secnavbar');
@@ -94,6 +148,7 @@ function scrollHeader(){
     }
 }
 
+// flick library initilization
 function flick(flickEle,dots,prevandNext,autoP,gCell){
 
     flicky = new Flickity(flickEle, {
@@ -109,3 +164,8 @@ function flick(flickEle,dots,prevandNext,autoP,gCell){
     });
 
  }
+
+ 
+
+ 
+

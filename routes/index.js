@@ -7,7 +7,7 @@ const {initialElements} = funs;
 
 router.get("/",(req,res) => {
 
-    const elements = [...initialElements,'../node_modules/bootstrap/dist/js/bootstrap.min.js','https://unpkg.com/@popperjs/core@2'];
+    const elements = [...initialElements,"../assets/lib/flickity/flickity.css","../assets/lib/flickity/flickity.pkgd.min.js",];
 
     const meta = funs.meta({
         description: "",
