@@ -97,7 +97,7 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 }
 
 .hero{
-    background-image: url("../Book-keeper/snow-4726119_1920.jpg");
+    background-image: url("../Bookkeeper/snow-4726119_1920.jpg");
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -209,7 +209,7 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
     @include media-breakpoint-up(lg){
         width: 23% !important;
     }
-
+   
 
 }
 
@@ -259,9 +259,9 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 }
 
 .bookcard{
-
+    
     &:hover{
-        .card-pic{
+      .card-pic{
             opacity: 0.3;
         }
         .placeholder{

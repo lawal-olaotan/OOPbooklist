@@ -1,0 +1,43 @@
+[
+    {   
+       "reviweravatar":"../assets/Bookkeeper/review1.jpg",
+        "name":"Yifei Chen",
+        "country":"South Korea",
+        "city": "Seoul",
+        "reviewDate":"April 2021",
+        "reviewcontent":"Using Book-keeper helped me keep track of my reading habit , it provides you the best book in the world also gives you reviews about books you added" 
+    },
+    {   
+        "reviweravatar":"../assets/Bookkeeper/review2.jpeg",
+         "name":"Kaori Yamaguchi",
+         "country":"Honolulu",
+         "city": "Hawaii",
+         "year":"February 2021",
+         "reviewcontent":"Book-keeper is the best application for new and veteran readers who want to get the latest book in their hands, I recommend it all my friends who really want to grow" 
+    },
+    {
+        "reviweravatar":"../assets/Bookkeeper/review3.jpeg",
+         "name":"Anthony Lewis",
+         "country":"Germany",
+         "city": "Berlin",
+         "year":"April 2021",
+         "reviewcontent":"Book reader helped me increase my concentration skills and really helped me get my hands dirty reading amazing books from great authors, I highly recommend for everyone " 
+    },
+    {
+        "reviweravatar":"../assets/Bookkeeper/review4.jpeg",
+         "name":"Enzokuhle Dennis",
+         "country":"South Africa",
+         "city": "Seoul",
+         "year":"January 2021",
+         "reviewcontent":"Book reader helped me increase my become a good reader , I have read the latest books reviewed by world leaders , I highly recommend this application to everyone looking to improve more." 
+    },
+    {
+        "reviweravatar":"../assets/Bookkeeper/review5.jpeg",
+         "name":"Omoh Adeyinka ",
+         "country":"Nigeria",
+         "city": "Lagos",
+         "year":"March 2021",
+         "reviewcontent":"Book reader is the application for curious minded individuals who really wants to keep up with the best information from the best writers in the planet , if you want to be a good reader try book reader." 
+    }
+
+]

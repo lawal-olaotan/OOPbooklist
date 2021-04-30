@@ -9,6 +9,7 @@ class Book {
     }
 }
 
+
 const bookForm = document.getElementById('book-form'),
     booktitle = bookForm.booktitle,
     recom = bookForm.recom,
@@ -17,6 +18,8 @@ const bookForm = document.getElementById('book-form'),
    
 
 const List = document.getElementById('booklist');
+
+
 
 class App {
 
@@ -127,6 +130,7 @@ class store {
 
 
 document.addEventListener('DOMContentLoaded', function(){
+    
     store.displayBooks();
 
     bookForm.addEventListener('submit', e=>{

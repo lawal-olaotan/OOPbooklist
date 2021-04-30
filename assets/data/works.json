@@ -1,16 +1,16 @@
 [
     {
-    "img_path":"../assets/Book-keeper/mouse-pointer.svg/",
-    "Title":"Sign Up in 5 minutes",
-    "description":"It takes approximately 5 minutes to join Book-reader™, you can use your email or other social media accounts to be a member."
+    "imgpath": "../assets/Bookkeeper/mouse-pointer.svg",
+    "Title": "Sign Up in 5 minutes",
+    "description": "It takes approximately 5 minutes to join Book-reader™, you can use your email or other social media accounts to be a member."
     },
     {
-    "img_path":"../assets/Book-keeper/book-open.svg/",
-    "Title":"Add your First  Book",
-    "description":"as a new user Book-reader™ provides you with trending best selling books but if you have your own books all good just add it and start learning "
+    "imgpath": "../assets/Bookkeeper/book-open.svg",
+    "Title": "Add your First  Book",
+    "description": "as a new user Book-reader™ provides you with trending best selling books but if you have your own books all good just add it and start learning "
     },
     {
-    "img_path":"../assets/Book-keeper/smile.svg/",
+    "imgpath":"../assets/Bookkeeper/smile.svg",
     "Title":"Get motivated",
     "description":"You added your books but not sure they are best reads , check out reviews attached to your booklist and see what othes are saying about it. "
     }
