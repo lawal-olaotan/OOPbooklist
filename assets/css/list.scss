@@ -1,0 +1,184 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+$primary: #0B959E;
+$book-keeperbg: #0B959E;
+$seccolor : #0b949ee7;
+$hovercolor:#093033cb;
+$neutral: #fff;
+
+$navbar-dark-brand-color:$book-keeperbg;
+$navbar-dark-color:$book-keeperbg;
+$navbar-dark-brand-hover-color:$book-keeperbg;
+
+.navbar-dark .navbar-nav .nav-link{
+    color: $book-keeperbg;
+}
+
+.navbar-dark .navbar-toggler{
+    color: $book-keeperbg;
+}
+
+#Nytimes{
+    display: none;
+}
+
+.login-btn{
+    margin-right: 3rem;
+
+    @include media-breakpoint-down(sm){
+        margin: 0;
+    }
+}
+
+.bestheader{
+    background-color: #0b949e52;
+    &__img {
+        height:150px;
+        width: 150px;
+
+        @include media-breakpoint-down(sm){
+            display: none;
+        }
+    
+    }
+
+    &__pic{
+        object-fit: cover;
+    }
+
+    &__title{
+        color: $book-keeperbg;
+    }
+}
+
+
+
+
+.bestlist{
+    &__outer{
+        background:#0b949e52;
+        width: 80%;
+        height: 100%;
+        margin:1rem 0 ;
+
+        @include media-breakpoint-up(md){
+            width:100%;
+        }
+        @include media-breakpoint-up(lg){
+                width: 80%;
+            }
+
+        @include media-breakpoint-down(sm){
+                width: 100%;
+        }
+    }
+   
+
+    &__card{
+        background: $neutral;
+        width: 90%;
+        border-radius: 10px;
+       -webkit-border-radius: 10px;
+       -moz-border-radius: 10px;
+       -ms-border-radius: 10px;
+       -o-border-radius: 10px;
+
+       @include media-breakpoint-up(lg){
+            width:85%;
+        }
+        @include media-breakpoint-down(sm){
+            width: 90%;
+        }
+
+        &:hover{
+            .bestlist__btn{
+                visibility: visible;
+            }
+        }
+    }
+
+    &__pic{
+        width: 80px;
+        height: 80px;
+
+        @include media-breakpoint-down(sm){
+                display:none;
+        }
+        
+    }
+    &__img{
+        border-radius: 100%;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -ms-border-radius: 100%;
+        -o-border-radius: 100%;
+        height: 100%;
+        width: 100%;
+        object-fit:cover;
+    } 
+
+   &__rank{
+       width: 10%;
+       font-size: 5rem;
+       color: $book-keeperbg;
+
+       @include media-breakpoint-down(sm){
+        font-size: 3rem;
+        width: unset;
+        margin: 0;
+        margin-right: .5rem;
+
+    }
+   }
+   &__content{
+       width: 60%;
+       @include media-breakpoint-down(sm){
+       width: 100%;
+       margin-bottom: 1.5rem;
+       text-align: center;
+
+    }
+
+    }
+
+    &__descript{
+        font-size: .7rem;
+    }
+
+    &__title{
+        font-weight: 600;
+        
+    }
+
+    &__btn{
+        visibility:hidden;
+        background: $book-keeperbg;
+        color: $neutral;
+        @include media-breakpoint-down(md){
+            visibility: visible;
+        }
+        &:hover{
+            color: $neutral !important;
+        }
+    }
+    
+}
+
+.fas{
+    position: absolute;
+    top: 1pc;
+    right: 1pc;
+}
+
+
+
+// @include media-breakpoint-down(sm){
+//     width: 84% !important;
+//     max-height: 324px;
+// }
+// @include media-breakpoint-up(md){
+//     width: 40% !important;
+// }
+// @include media-breakpoint-up(lg){
+//     width: 23% !important;
+// }

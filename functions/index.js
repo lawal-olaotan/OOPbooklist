@@ -28,7 +28,7 @@ exports.renderImplimental = (params, no_join) => {
 
 }
 
-exports.initialElements = ["assets/css/style.min.css","//cdn.jsdelivr.net/npm/axios/dist/axios.min.js","../assets/js/main.js","https://use.fontawesome.com/releases/v5.15.3/css/all.css", "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap", 'https://unpkg.com/@popperjs/core@2',"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js","https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js",
+exports.initialElements = ["assets/css/style.min.css","//cdn.jsdelivr.net/npm/axios/dist/axios.min.js","https://use.fontawesome.com/releases/v5.15.3/css/all.css", "https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap", 'https://unpkg.com/@popperjs/core@2',"https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js","https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js",
 ];
 
 exports.meta = (data, req) => {

@@ -272,9 +272,11 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 }
 
 #viewall{
+    text-decoration: none;
     padding: .8rem 2rem;
     background: $book-keeperbg;
     color: $neutral;
+
 }
 
 .btnposition{

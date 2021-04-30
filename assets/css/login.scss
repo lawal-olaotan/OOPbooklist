@@ -1,0 +1,95 @@
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+$primary: #0B959E;
+$book-keeperbg: #0B959E;
+$seccolor : #0b949ee7;
+$hovercolor:#093033cb;
+$neutral: #fff;
+
+$input-focus-color:$book-keeperbg;
+$input-focus-border-color:$book-keeperbg;
+
+
+$navbar-dark-brand-color:$book-keeperbg;
+$navbar-dark-color:$book-keeperbg;
+$navbar-dark-brand-hover-color:$book-keeperbg;
+
+.form-control{
+    &:focus{
+        border-color: $book-keeperbg !important;
+    }
+}
+
+
+.navbar-dark .navbar-nav .nav-link{
+    color: $book-keeperbg;
+}
+
+
+.navbar-dark .navbar-toggler{
+    color: $book-keeperbg;
+}
+
+.login-btn{
+    display: none;
+    margin-right: 3rem;
+
+    @include media-breakpoint-down(sm){
+        margin: 0;
+    }
+}
+
+.bookfooter{
+    display: none !important;
+}
+
+.navbar-toggler{
+    display: none;
+}
+
+
+.login{
+    height: 90vh;
+    background:#0b949e52;
+
+    &__wrapper{
+        background: $neutral;
+        width: 35%;
+        box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+        
+    }
+
+    &__btn{
+        background-color: $book-keeperbg;
+        color: $neutral;
+    }
+
+    &__title{
+        font-size: 1.2rem;
+    }
+    &__link{
+        font-size: 1rem;
+        color: $book-keeperbg;
+
+        &:hover{
+            color: $book-keeperbg;
+        }
+    }
+
+    &__description{
+        font-size: .8rem;
+    }
+
+    .form-floating>.form-control{
+        height: 2.8rem !important;
+    }
+    .form-floating>label{
+        top: -.4pc !important;
+        font-size: .8rem;
+    }
+}
+
+
+
+
+
