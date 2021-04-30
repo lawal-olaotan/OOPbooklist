@@ -6,25 +6,26 @@ const nextBtn = document.querySelector('#nextbtn'),
  reviewcarol = document.querySelector('#review-carousel'),
  carol = document.querySelector('.main-carousel');
 
- let flicky;
+ let flicky,homefun;
+
+
 
 class Homepagefuncs{
 
-    // flick(flickEle,dots,prevandNext,autoP,gCell){
+    flick(flickEle,dots,prevandNext,autoP,gCell){
 
-    //     flicky = new Flickity(flickEle, {
-    //         cellAlign:'left',
-    //         contain:false,
-    //         freeScroll:true,
-    //         pageDots:dots,
-    //         prevNextButtons:prevandNext,
-    //         autoPlay:autoP,
-    //         groupCells:gCell,
-    //         pauseAutoPlayOnHover: false,
+        flicky = new Flickity(flickEle, {
+            cellAlign:'left',
+            contain:false,
+            freeScroll:true,
+            pageDots:dots,
+            prevNextButtons:prevandNext,
+            autoPlay:autoP,
+            groupCells:gCell,
+            pauseAutoPlayOnHover: false,
+        });
     
-    //     });
-    
-    //  }
+     }
 
      loadcard(){
 
@@ -73,8 +74,10 @@ class Homepagefuncs{
                })
     
            }
+            let homefun = new Homepagefuncs();
+            homefun.flick(carol,false,true,false,true);
     
-            flick(carol,false,true,false,true);
+            
     
              function getKeys(rank,author,title){
     
@@ -196,8 +199,8 @@ class Homepagefuncs{
                     reviewcarol.insertAdjacentHTML("afterbegin",reviewTemp(reviewData))
                 }
             }
-    
-            flick(reviewcarol,true,false,true,false);
+            homefun = new Homepagefuncs();
+            homefun.flick(reviewcarol,true,false,true,false);
         })
     
     }
@@ -245,26 +248,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     });
 
-
 });
 
-
-
-// flick library initilization
-function flick(flickEle,dots,prevandNext,autoP,gCell){
-
-    flicky = new Flickity(flickEle, {
-        cellAlign:'left',
-        contain:false,
-        freeScroll:true,
-        pageDots:dots,
-        prevNextButtons:prevandNext,
-        autoPlay:autoP,
-        groupCells:gCell,
-        pauseAutoPlayOnHover: false,
-
-    });
-
- }
 
  
