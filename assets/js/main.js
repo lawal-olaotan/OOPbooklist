@@ -210,13 +210,13 @@ class Homepagefuncs{
 //getting keys for Bestselling Apis 
 // const NY = config.NYT_KEY;
 
+// new bootstrap.scrollSpy(document.body, {
+//     target:'#secnavbar',
+// })
 
 document.addEventListener('DOMContentLoaded', function(){
 
     const homeFuncs = new Homepagefuncs(); 
-
-   
-
     // navbar scroll effect
     window.addEventListener('scroll',e=>{
         const navbar = document.querySelector('#secnavbar');

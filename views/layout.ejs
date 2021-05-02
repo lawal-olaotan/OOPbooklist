@@ -5,6 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com">
+    <script src="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.0/firebase-ui-auth.css" />   
 
     <% if (typeof elements !== "undefined" && elements.length) {
         elements.map(el=>{
@@ -19,7 +21,7 @@
  
     <title><%- title %></title>
 </head>
-    <body class="body" data-bs-spy="scroll" data-bs-target="#secnavbar" data-bs-offset="20" tabindex="0">
+    <body data-spy="scroll" data-target="#secnavbar">
        
     <%-body%>
 

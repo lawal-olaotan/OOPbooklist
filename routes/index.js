@@ -25,7 +25,7 @@ router.get("/",(req,res) => {
 
 router.get("/bestsellers",(req,res) => {
 
-    const elements = [...initialElements,"../assets/js/list.js","../assets/css/list.min.css"];
+    const elements = [...initialElements,"../assets/js/list.js","../assets/css/list.min.css",];
 
     const meta = funs.meta({
         description: "",
@@ -43,7 +43,7 @@ router.get("/bestsellers",(req,res) => {
 
 router.get("/signup",(req,res) => {
 
-    const elements = [...initialElements,"../assets/js/list.js","../assets/css/list.min.css","../assets/css/login.min.css" ];
+    const elements = [...initialElements,"../assets/js/login.js","../assets/css/list.min.css","../assets/css/login.min.css" ];
 
     const meta = funs.meta({
         description: "",

@@ -4,36 +4,36 @@
 
         <div class="login__wrapper container m-0 p-4">
 
-            <form  class="container login__container">
+            <form id="signupForm"  class="container login__container needs-validation" novalidate>
                
                 <div class="mb-3 d-flex justify-content-between align-items-center mb-2">
                     <h3 class="login__title">Sign Up for <span class="Primarycolor">Book-Keeper™</span></h3>
                     <a class="login__link"href="/signin">Login Instead</a>
                 </div>
 
-                <p class="login__description mb-3">Book-Keeper is totally free to use. Sign up using your email address or phone number below to get started.</p>
+                <p class="login__description mb-3">Book-Keeper is totally free to use. Sign up using your email address below to get started.</p>
 
                 <div class="form-floating login__inputcont mb-3">
-                    <input type="email" name="email" id="email" class="form-control" aria-describedby="emailHelp" placeholder="Email Address">
+                    <input type="email" name="email" id="email" class="form-control" aria-describedby="emailHelp" placeholder="Email Address" required>
                     <label for="email">Email Address</label>
-                    <span id="emailhelp" class="form-text"></span>
+                    <span  class="message form-text"></span>
                 </div>
 
-                <div class="form-floating login__inputcont mb-3">
-                    <input type="password" name="password" id="password" class="form-control" aria-describedby="passhelp" placeholder="Email Address">
+                <div class="form-floating login__inputcont mb-3 showform">
+                    <input type="password" name="password" id="password" class="form-control" aria-describedby="passhelp" placeholder="Email Address" required>
                     <i class="fas fa-eye"></i>
                     <label for="password">Password</label>
-                    <span id="passhelp" class="form-text"></span>
+                    <span class="message form-text">Use 8 characters or more</span>
                 </div>
 
-                <div class="form-floating login__inputcont mb-3">
-                    <input type="text" name="name" id="name" class="form-control" aria-describedby="namehelp" placeholder="Email Address">
+                <div class="form-floating login__inputcont mb-3 showform">
+                    <input type="text" name="name" id="name" class="form-control" aria-describedby="namehelp" placeholder="Email Address" required>
                     <label for="name">Name</label>
-                    <span id="namehelp" class="form-text"></span>
+                    <span class="message form-text"></span>
                 </div>
 
                 
-                <button class="login__btn btn w-100 py-2" type="submit">Agree and Sign Up</button>
+                <button class="login__btn btn w-100 py-2" type="submit">Sign Up</button>
 
                 
 

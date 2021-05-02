@@ -11458,7 +11458,7 @@ fieldset:disabled .btn {
   }
 }
 
-.body {
+body {
   position: relative;
 }
 
@@ -11479,8 +11479,8 @@ fieldset:disabled .btn {
 
 .btn-join {
   font-weight: 300;
-  color: #fff;
-  border-color: #fff;
+  color: #fff !important;
+  border-color: #fff !important;
 }
 
 .btn-join:hover {
@@ -11492,8 +11492,8 @@ fieldset:disabled .btn {
   background-color: #fff;
   -webkit-box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
           box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-  position: -webkit-sticky;
-  position: sticky;
+  position: -webkit-sticky !important;
+  position: sticky !important;
   top: 0;
   z-index: 1000;
   transition: 0.2s ease-in-out;

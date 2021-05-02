@@ -89,7 +89,29 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
     }
 }
 
+.fas{
+    position: absolute;
+    top: 1pc;
+    right: 1pc;
+}
 
 
 
 
+.form-text{
+    font-size: .7rem !important;
+}
+
+.formerror{
+    border: 1px solid red !important;
+}
+
+.formsucess{
+    border: 1px solid $book-keeperbg !important;
+    box-shadow: none !important;
+}
+
+
+.showform{
+    display: none;
+}

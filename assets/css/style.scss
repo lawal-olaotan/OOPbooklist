@@ -17,9 +17,11 @@ $navbar-dark-brand-color:$book-keeperbg;
 $navbar-dark-color:$book-keeperbg;
 $navbar-dark-brand-hover-color:$book-keeperbg;
 
-.body{
+body{
     position: relative;
 }
+
+
 
 .Primarycolor{
     color: $book-keeperbg;
@@ -38,8 +40,8 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 
 .btn-join{
     font-weight: 300;
-    color: $neutral;
-    border-color: $neutral;
+    color: $neutral !important;
+    border-color: $neutral !important;
     &:hover{
         color: #FDFDFD;
     }
@@ -49,7 +51,7 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
     padding: .6rem 0;
     background-color:$neutral;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
-    position:sticky;
+    position:sticky !important;
     top: 0;
     z-index: 1000;
     transition: 0.2s ease-in-out;

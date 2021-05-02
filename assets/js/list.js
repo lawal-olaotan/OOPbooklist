@@ -1,15 +1,16 @@
 
 
-const topnav = document.querySelector("#topnav");
-const listWrapper = document.querySelector("#listwrapper");
+const topnav = document.querySelector("#topnav"),
+ listWrapper = document.querySelector("#listwrapper");
+
+
 
 
 
 document.addEventListener('DOMContentLoaded', function(){
 
-    topnav.style.display="none";
-    console.log('we are live');
     loadlist()
+
 })
 
 
@@ -94,3 +95,5 @@ function loadlist(){
             console.log(error)
         })
 }
+
+
