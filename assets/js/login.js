@@ -1,4 +1,5 @@
 
+
 const signupForm = document.querySelector('#signupForm'),
         EmailInput = signupForm.email,
         passwordInput = signupForm.password,
@@ -146,10 +147,35 @@ document.addEventListener('DOMContentLoaded',function(){
 
         e.preventDefault();
 
-    let validName =  inputmet.checkName(),
+        let validName =  inputmet.checkName(),
         validEmail = inputmet.checkEmail(),
         validPass = inputmet.checkPassword();
 
+        let validForm = validName && validEmail && validPass;
+
+        if(validForm){
+
+            data = { 
+                email : EmailInput.value,
+                password : passwordInput.value,
+                UserName :nameInput.value
+            }
+
+            axios.post('/userReg',data)
+            .then(res => {
+
+                if(res.data){
+                    if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
+                        
+                        setTimeout(window.location.replace("/"),5000)
+                           
+                    }
+                }
+            })
+
+           
+        
+        }
 
 
     

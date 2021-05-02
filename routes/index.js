@@ -60,6 +60,12 @@ router.get("/signup",(req,res) => {
 });
 
 
+router.post('/userReg', (req,res)=> {
+    const userdata = req.body
+    console.log(userdata);
+    res.status(200).json({status:'successful'})
+})
+
 
 
 
