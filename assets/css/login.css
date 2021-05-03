@@ -11503,7 +11503,12 @@ fieldset:disabled .btn {
 
 .login__btn {
   background-color: #0B959E;
-  color: #fff;
+  color: #fff !important;
+  font-size: 16px;
+}
+
+.login__btn:hover {
+  color: #fff !important;
 }
 
 .login__title {
@@ -11554,5 +11559,10 @@ fieldset:disabled .btn {
 
 .showform {
   display: none;
+}
+
+.form-check-input:checked {
+  background-color: #0B959E !important;
+  border: none !important;
 }
 /*# sourceMappingURL=login.css.map */

@@ -6,6 +6,10 @@ const signupForm = document.querySelector('#signupForm'),
         nameInput = signupForm.name,
 topnav = document.querySelector("#topnav");
 
+const signUpFormBtn = document.querySelector("#signupbtn"),
+        checkBoxEle = document.querySelector('#flexCheckChecked'),
+        eyeBtn = document.querySelector("#eyebtn");
+
 let inputParent;
 
 class checkProp{
@@ -95,6 +99,8 @@ class inputMethods extends checkProp {
             this.showMessage(EmailInput,'',true)
             passwordInput.parentElement.classList.remove('showform')
             nameInput.parentElement.classList.remove('showform')
+            signUpFormBtn.textContent = 'Sign Up'
+
             status = true;
         }
     
@@ -137,11 +143,31 @@ class inputMethods extends checkProp {
 
 document.addEventListener('DOMContentLoaded',function(){
 
+
+
+    checkBoxEle.addEventListener('change', e=>{
+        if(checkBoxEle.checked === false){
+            signUpFormBtn.disabled = true
+        }else{
+            signUpFormBtn.disabled = false;
+        }
+    })
+
     topnav.style.display="none";
     // initilizing input method object
     let inputmet = new inputMethods();
 
-
+    eyeBtn.addEventListener('click', e => {
+        if(eyeBtn.classList.contains('fa-eye')){
+            passwordInput.type = 'text';
+            eyeBtn.classList.add('fa-eye-slash')
+            eyeBtn.classList.remove('fa-eye')
+        }else{
+            passwordInput.type = 'password'
+            eyeBtn.classList.remove('fa-eye-slash');
+            eyeBtn.classList.add('fa-eye');
+        }
+    })
     
     signupForm.addEventListener('submit', e=>{
 
@@ -160,15 +186,15 @@ document.addEventListener('DOMContentLoaded',function(){
                 password : passwordInput.value,
                 UserName :nameInput.value
             }
-
-            axios.post('/userReg',data)
+           
+            axios.post('/users/register',data)
             .then(res => {
-
                 if(res.data){
                     if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
-                        
-                        setTimeout(window.location.replace("/"),5000)
-                           
+                        signUpFormBtn.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>';
+                             setTimeout(function(){
+                                window.location.replace("http://localhost:5505/")
+                             },2000) 
                     }
                 }
             })
