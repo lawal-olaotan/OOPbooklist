@@ -7,9 +7,11 @@
             <form id="signupForm"  class="container login__container needs-validation" novalidate>
                
                 <div class="mb-3 d-flex justify-content-between align-items-center mb-2">
-                    <h3 class="login__title">Sign Up for <span class="Primarycolor">Book-Keeper™</span></h3>
+                    <h3 class="login__title">Sign Up for <span class="Primarycolor">Book-Keeper™</span></h3>    
                     <a class="login__link"href="/signin">Login Instead</a>
                 </div>
+
+                <%- include('./partials/error.ejs') %>
 
                 <p class="login__description mb-3">Book-Keeper is totally free to use. Sign up using your email address below to get started.</p>
 

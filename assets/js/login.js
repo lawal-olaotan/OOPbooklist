@@ -143,8 +143,6 @@ class inputMethods extends checkProp {
 
 document.addEventListener('DOMContentLoaded',function(){
 
-
-
     checkBoxEle.addEventListener('change', e=>{
         if(checkBoxEle.checked === false){
             signUpFormBtn.disabled = true
