@@ -1,0 +1,63 @@
+<%- include('./partials/header.ejs') %>
+<main>
+    <section class="login container-fluid d-flex justify-content-center align-items-center">
+
+        <div class="login__wrapper container m-0 p-4">
+
+            <form id="loginForm"  class="container login__container needs-validation" method="POST" action="http://localhost:5505/users/login">
+               
+                <div class="mb-3 d-flex justify-content-between align-items-center mb-2">
+                    <h3 class="login__title">Login to <span class="Primarycolor">Book-Keeper™</span></h3>    
+                    <a class="login__link" href="/users/register">Register Instead</a>
+                </div>
+                
+                
+                <p id="servermess" class="login__description mb-3">Learn more with Book-Keeper™</p>
+
+                <div class="form-floating login__inputcont mb-3">
+                    <input type="email" name="email" id="email" class="form-control" aria-describedby="emailHelp" placeholder="Email Address" required>
+                    <label for="email">Email Address</label>
+                    <span  class="message form-text"></span>
+                </div>
+
+                <div class="form-floating login__inputcont mb-3">
+                    <input type="password" name="password" id="password" class="form-control" aria-describedby="passhelp" placeholder="Email Address" required>
+                    <label for="password">Password</label>
+                    <span class="message form-text"></span>
+                </div>
+
+                <div class="mb-3">
+                    <a class="login__link login__forgot" id="forgotpass">Forgot Password</a>
+                  </div>
+                
+                
+                <button id="signupbtn" class="login__btn btn w-100 py-2" type="submit">Sign In</button>
+                
+            </form>
+
+            <form id="ResetForm"  class="container login__container needs-validation showform" novalidate>
+               
+                <div class="mb-3 d-flex justify-content-between align-items-center mb-2">
+                    <h3 class="login__title">Reset Password</h3>    
+                    <a id="forgetlogin" class="login__link" href="#">login Instead</a>
+                </div>
+                
+                <p class="login__description mb-3"></p>
+
+                <div class="form-floating login__inputcont mb-3">
+                    <input type="email" name="email" id="email" class="form-control" aria-describedby="emailHelp" placeholder="Email Address" required>
+                    <label for="email">Email Address</label>
+                    <span  class="message form-text"></span>
+                </div>
+
+            
+                <button id="signupbtn" class="login__btn btn w-100 py-2" type="submit">Reset Password</button>
+                
+            </form>
+
+        </div>
+
+    </section>
+</main>
+
+<%- include('./partials/footer.ejs') %>

@@ -3,8 +3,7 @@
 const signupForm = document.querySelector('#signupForm'),
         EmailInput = signupForm.email,
         passwordInput = signupForm.password,
-        nameInput = signupForm.name,
-topnav = document.querySelector("#topnav");
+        nameInput = signupForm.name;
 
 const signUpFormBtn = document.querySelector("#signupbtn"),
         checkBoxEle = document.querySelector('#flexCheckChecked'),
@@ -143,6 +142,7 @@ class inputMethods extends checkProp {
 
 document.addEventListener('DOMContentLoaded',function(){
 
+
     checkBoxEle.addEventListener('change', e=>{
         if(checkBoxEle.checked === false){
             signUpFormBtn.disabled = true
@@ -151,7 +151,6 @@ document.addEventListener('DOMContentLoaded',function(){
         }
     })
 
-    topnav.style.display="none";
     // initilizing input method object
     let inputmet = new inputMethods();
 
@@ -169,6 +168,8 @@ document.addEventListener('DOMContentLoaded',function(){
     
     signupForm.addEventListener('submit', e=>{
 
+        
+
         e.preventDefault();
 
         let validName =  inputmet.checkName(),
@@ -184,18 +185,31 @@ document.addEventListener('DOMContentLoaded',function(){
                 password : passwordInput.value,
                 UserName :nameInput.value
             }
-           
+
             axios.post('/users/register',data)
             .then(res => {
+
+                if(res.data.status === 'exists'){
+                        let serverMess = document.querySelector('#servermess');
+                        serverMess.textContent = 'This user is already registered';
+                        serverMess.classList.add('errornotification')
+                }
+
+                if(res.data.status === 'inputerror'){
+                        let serverMess = document.querySelector('#servermess');
+                        serverMess.textContent = 'All fields are required';
+                        serverMess.classList.add('errornotification')
+                }
+
                 if(res.data){
                     if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
+                        console.log(successful)
                         signUpFormBtn.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>';
-                             setTimeout(function(){
-                                window.location.replace("http://localhost:5505/")
-                             },2000) 
                     }
                 }
-            })
+            }).catch(error=>{
+                    console.log(error)
+                })
 
            
         

@@ -2,84 +2,113 @@ const express = require ("express"),
     funs = require ('../functions'),
     router = express.Router();
 
+
+    const bcryptjs = require ("bcryptjs");
     // getting user schema 
     const User = require("../models/user");
-
     const {initialElements} = funs;
+    const passport = require('passport');
+    const {forwardAuthenticated} = require ('../config/auth')
+
+
+    
     
     // registeration route
     // this route renders the registeration form
-    router.get("/signup",(req,res) => {
-
+    router.get("/register",forwardAuthenticated,(req,res) => {
         const elements = [...initialElements,"../assets/js/login.js","../assets/css/list.min.css","../assets/css/login.min.css" ];
-    
+
         const meta = funs.meta({
             description: "",
             keywords:"top 10 best sellers, where to keep books",
         },req)
     
         res.render("signup",{
-            title: "Book-keeper™ | regsiter",
+            title: "Book-Kepper™ | Register",
             meta,
             elements,
             path:funs.pathToTheRoot(req._parsedUrl.path),
-    
         })
+
     });
 
-
+  
+    
     // this get the data from the form in the client side
-    router.post('/register', (req,res)=> {
-
+    router.post('/register', (req,res) => {
         const userdata = req.body;
-        let errors = [];
 
        if(!userdata.UserName || !userdata.email  || !userdata.password ){
-            errors.push({msg:"Please fill an fields"});
-            console.log('error')
+                res.json({status:"inputerror"});
        }
 
        const re = new RegExp("^(?=.*[A-Z])(?=.*[0-9])(?=.{8,})");
        if(!re.test(userdata.password)){
-           errors.push({msg:'Password must contain a capital letter and a number'})
+                res.json({status:"inputerror"});
        }
 
-       if(errors.length > 0){
-           res.render('signup', {
-            errors:errors, 
-            name: userdata.UserName,
-            email : userdata.email,
-            password :userdata.password,
-           });
-       } else{
 
-           User.findOne({email:userdata.email}).exec((err,user)=>{
-
+           User.findOne({email: userdata.email})
+           .then((user)=>{
                 if(user){
-                    errors.push({msg:'email already registered'});
 
-                    res.render('signup', {
-                        errors:errors, 
-                        name: userdata.UserName,
-                        email : userdata.email,
-                        password :userdata.password,  
-                    });
+                 res.json({status:"exists"});
+                   
                 }else{
                     const newUser = new User(userdata);
-                    console.log(NewUser);
-                    
 
-                    
-
-
+                    // encrypting password 
+                    bcryptjs.genSalt(10,(err,salt) => {
+                        bcryptjs.hash(newUser.password,salt, (err,hash)=>{
+                            if(err) throw err; 
+                            newUser.password = hash;
+                            newUser.save()
+                            .then( user => {
+                                req.flash('success_msg','You have now registered!');
+                                res.status(200).json({status:"successful"});             
+                            })
+                            .catch(err => console.log(err));
+                        })
+                    })
+              
                 }
 
            });
 
-       }
-
-       res.status(200).json({status:"successful"});
+       
     });
+
+
+
+    // rendering login page with ejs and it's own custom javascript file
+    router.get("/login",forwardAuthenticated,(req,res) => {
+
+        const elements = [...initialElements,"../assets/js/signin.js","../assets/css/list.min.css","../assets/css/login.min.css" ];
+
+        const meta = funs.meta({
+            description: "",
+            keywords:"top 10 best sellers, where to keep books",
+        },req)
+    
+        res.render("login",{
+            title: "Book-Kepper™ | Login",
+            meta,
+            elements,
+            path:funs.pathToTheRoot(req._parsedUrl.path),
+        })
+
+    });
+
+
+    router.post("/login",(req,res,next) => {
+        passport.authenticate ('local', {
+            successRedirect:'/dashboard',
+            failureRedirect:'/users/login',
+            failureFlash:true,
+        })(req,res,next)
+    })
+
+
     
 
     module.exports = router;

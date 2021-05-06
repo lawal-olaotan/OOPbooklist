@@ -92,6 +92,11 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
         top: -.4pc !important;
         font-size: .8rem;
     }
+    &__forgot{
+        cursor: pointer;
+        text-decoration: none;
+        font-size: .8rem;
+    }
 }
 
 .fas{
@@ -124,4 +129,15 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 .form-check-input:checked{
     background-color: $book-keeperbg !important;
     border: none !important;
+}
+
+.errornotification{
+    padding: .5rem 1rem ;
+    width: fit-content;
+    background-color: red;
+    color: $neutral;
+}
+
+#topnav{
+    display: none;
 }

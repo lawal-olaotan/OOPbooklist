@@ -36,7 +36,7 @@ function loadlist(){
                         </div>
 
                         <div class="bestlist__actions d-flex align-items-center justify-content-center flex-column">
-                            <a class="bestlist__btn btn mb-3" href="#"> Add to Book</a>
+                            <a class="bestlist__btn btn mb-3" href="/users/signup"> Add to Book</a>
                         </div>
 
                     </div>

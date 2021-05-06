@@ -44,6 +44,24 @@ router.get("/bestsellers",(req,res) => {
     })
 });
 
+// best sellers page 
+router.get("/dashboard",(req,res) => {
+
+    const elements = [...initialElements,"../assets/js/list.js","../assets/css/list.min.css",];
+
+    const meta = funs.meta({
+        description: "",
+        keywords:"top 10 best sellers, where to keep books",
+    },req)
+
+    res.render("dashboard",{
+        title: "Book-keeper™ | dashboard",
+        meta,
+        elements,
+        path:funs.pathToTheRoot(req._parsedUrl.path),
+
+    })
+});
 
 
 

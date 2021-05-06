@@ -11537,6 +11537,12 @@ fieldset:disabled .btn {
   font-size: .8rem;
 }
 
+.login__forgot {
+  cursor: pointer;
+  text-decoration: none;
+  font-size: .8rem;
+}
+
 .fas {
   position: absolute;
   top: 1pc;
@@ -11564,5 +11570,18 @@ fieldset:disabled .btn {
 .form-check-input:checked {
   background-color: #0B959E !important;
   border: none !important;
+}
+
+.errornotification {
+  padding: .5rem 1rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  background-color: red;
+  color: #fff;
+}
+
+#topnav {
+  display: none;
 }
 /*# sourceMappingURL=login.css.map */

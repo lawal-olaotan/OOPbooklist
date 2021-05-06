@@ -1,6 +1,6 @@
 <%- include('./partials/header.ejs') %>
 <main>
-    <section class="login container-fluid d-flex justify-content-center align-items-center p">
+    <section class="login container-fluid d-flex justify-content-center align-items-center">
 
         <div class="login__wrapper container m-0 p-4">
 
@@ -8,12 +8,11 @@
                
                 <div class="mb-3 d-flex justify-content-between align-items-center mb-2">
                     <h3 class="login__title">Sign Up for <span class="Primarycolor">Book-Keeper™</span></h3>    
-                    <a class="login__link"href="/signin">Login Instead</a>
+                    <a class="login__link" href="/users/login">Login Instead</a>
                 </div>
-
-                <%- include('./partials/error.ejs') %>
-
-                <p class="login__description mb-3">Book-Keeper is totally free to use. Sign up using your email address below to get started.</p>
+                
+                
+                <p id="servermess" class="login__description mb-3">Book-Keeper is totally free to use. Sign up using your email address below to get started.</p>
 
                 <div class="form-floating login__inputcont mb-3">
                     <input type="email" name="email" id="email" class="form-control" aria-describedby="emailHelp" placeholder="Email Address" required>

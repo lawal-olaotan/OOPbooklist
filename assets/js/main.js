@@ -36,7 +36,7 @@ class Homepagefuncs{
                                     <div  class="card-img-top position-relative">
                                             <img id="${data.book_details[0].author}" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/387928/book%20placeholder.png" class="card-pic img-thumbnail p-0 border-0"  alt="card image">
                                             <div class="placeholder d-flex justify-content-center align-items-center w-100 h-100">
-                                                <a class="btn bok-btn btn-sm"id="homeadd" href="#">Add to Books</a>
+                                                <a class="btn bok-btn btn-sm"id="homeadd" href="/users/signup">Add to Books</a>
                                             </div>
                                     </div>
                                     <div class="card-body">

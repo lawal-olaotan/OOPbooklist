@@ -4,10 +4,16 @@ const ejs = require('express-ejs-layouts');
 const app = express();
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 5505;
+const flash = require('connect-flash');
+const session = require ('express-session');
+const passport = require ('passport');
 
+// passport comfig 
+require("./config/passport")(passport)
+
+// express body parser
 app.use(express.urlencoded({extended: true }))
 app.use(express.json())
-
 
 
 // set up database 
@@ -18,13 +24,34 @@ mongoose.connect(mongoDB,{useNewUrlParser:true,useUnifiedTopology:true})
 
 
 // let db = mongoose.connection;
-
 // db.on('error',console.error.bind(console,'MongoDB connection error'))
-
 
 
 // serve statics
 app.use("/assets", express.static(__dirname + "/assets"));
+
+
+app.use(session({
+    secret:'secret',
+    resave:true,
+    saveUninitialized:true,
+}));
+
+// passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+// connecting flash 
+app.use(flash());
+
+// global variables
+app.use((req,res,next)=> {
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    next();
+
+});
 
 
 // EJS templating engine
@@ -38,7 +65,7 @@ app.use(require('./functions').useLocals);
 // Routes 
 app.use("/", require("./routes/index"));
 app.use("/users",require("./routes/users"));
-app.use("/dashboard",require("./routes/"));
+// app.use("/dashboard",require("./routes/"));
 
 
 app.listen(PORT,console.log(`Server listening at ${PORT}`));
