@@ -8,7 +8,9 @@ const express = require ("express"),
     const User = require("../models/user");
     const {initialElements} = funs;
     const passport = require('passport');
-    const {forwardAuthenticated} = require ('../config/auth')
+
+    const { forwardAuthenticated } = require('../config/auth');
+  
 
 
     
@@ -35,7 +37,7 @@ const express = require ("express"),
   
     
     // this get the data from the form in the client side
-    router.post('/register', (req,res) => {
+    router.post('/register',(req,res) => {
         const userdata = req.body;
 
        if(!userdata.UserName || !userdata.email  || !userdata.password ){
@@ -99,13 +101,19 @@ const express = require ("express"),
 
     });
 
-
+    // handles user login routes with serverside rendering for security purpose
     router.post("/login",(req,res,next) => {
         passport.authenticate ('local', {
             successRedirect:'/dashboard',
             failureRedirect:'/users/login',
             failureFlash:true,
         })(req,res,next)
+    })
+
+    router.get("/logout",(req,res,)=>{
+        req.logout();
+        req.flash('success_msg', 'You successfully logged out');
+        res.redirect('/users/login');
     })
 
 

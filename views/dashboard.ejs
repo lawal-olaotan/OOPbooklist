@@ -1,5 +1,9 @@
-<%- include('./partials/header.ejs') %>
+
 <main>
-   <h1>Welcome to Book-Keeper™</h1> 
-   <%- include('./partials/messages.ejs') %>
+   <h1>Welcome to Book-Keeper™  <%= user.UserName %> </h1> 
+
+   <h1>Your email  <%= user.email%> </h1> 
+
+   <a href="/users/logout">Log Out</a>
+  
 </main>

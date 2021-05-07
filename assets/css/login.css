@@ -11581,6 +11581,10 @@ fieldset:disabled .btn {
   color: #fff;
 }
 
+.successnotification {
+  background-color: #0B959E !important;
+}
+
 #topnav {
   display: none;
 }

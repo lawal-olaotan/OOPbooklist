@@ -4,6 +4,7 @@ const express = require ("express"),
     router = express.Router();
 
 const {initialElements} = funs;
+const {ensureAuthenicated} = require ("../config/auth");
 
 // homePage rendered 
 router.get("/",(req,res) => {
@@ -44,8 +45,8 @@ router.get("/bestsellers",(req,res) => {
     })
 });
 
-// best sellers page 
-router.get("/dashboard",(req,res) => {
+// best dashbaord route
+router.get("/dashboard",ensureAuthenicated,(req,res) => {
 
     const elements = [...initialElements,"../assets/js/list.js","../assets/css/list.min.css",];
 
@@ -56,6 +57,7 @@ router.get("/dashboard",(req,res) => {
 
     res.render("dashboard",{
         title: "Book-keeper™ | dashboard",
+        user:req.user,
         meta,
         elements,
         path:funs.pathToTheRoot(req._parsedUrl.path),

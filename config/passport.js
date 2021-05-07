@@ -9,18 +9,18 @@ const User = require('../models/user');
 
 
 module.exports = function (passport){
-
+// configure passport object
     passport.use(
         new LocalStrategy({usernameField : 'email'}, (email,password,done) => {
 
-            // find user information
-            User.findOne({email: email})
+            // find user email  information from the database
+            User.findOne({email:email})
             .then((user) => {
                 if(!user){
                     return done(null,false, {message:'email is not registered'});
                 }
 
-                // matching password 
+                // matching password with database information
                 bcryptjs.compare(password,user.password, (err,isMatch)=> {
                     if(err) throw err;
                     if(isMatch){

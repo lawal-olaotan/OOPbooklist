@@ -1,15 +1,18 @@
 
 const express = require ('express');
 const ejs = require('express-ejs-layouts');
-const app = express();
 const mongoose = require('mongoose')
 const PORT = process.env.PORT || 5505;
 const flash = require('connect-flash');
 const session = require ('express-session');
-const passport = require ('passport');
 
+const passport = require ('passport');
 // passport comfig 
 require("./config/passport")(passport)
+
+const app = express();
+
+
 
 // express body parser
 app.use(express.urlencoded({extended: true }))
@@ -43,6 +46,7 @@ app.use(passport.session());
 
 // connecting flash 
 app.use(flash());
+
 
 // global variables
 app.use((req,res,next)=> {

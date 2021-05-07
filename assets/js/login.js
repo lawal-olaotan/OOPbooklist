@@ -188,9 +188,9 @@ document.addEventListener('DOMContentLoaded',function(){
 
             axios.post('/users/register',data)
             .then(res => {
+                let serverMess = document.querySelector('#servermess');
 
                 if(res.data.status === 'exists'){
-                        let serverMess = document.querySelector('#servermess');
                         serverMess.textContent = 'This user is already registered';
                         serverMess.classList.add('errornotification')
                 }
@@ -203,8 +203,14 @@ document.addEventListener('DOMContentLoaded',function(){
 
                 if(res.data){
                     if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
-                        console.log(successful)
+
                         signUpFormBtn.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>';
+                        setTimeout(function(){
+                            window.location.assign('http://localhost:5505/users/login');
+                        },2000)
+
+
+                        
                     }
                 }
             }).catch(error=>{
