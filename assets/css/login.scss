@@ -54,9 +54,23 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 
     &__wrapper{
         background: $neutral;
-        width: 35%;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-        
+
+         @include media-breakpoint-down(sm){
+           width: 90%;
+        }
+         @include media-breakpoint-up(md){
+           width: 45%;
+        }
+         @include media-breakpoint-up(lg){
+           width: 35%;
+        }
+         @include media-breakpoint-up(xl){
+           width: 32%;
+        }
+         @include media-breakpoint-up(xxl){
+           width: 28%;
+        }
     }
 
     &__btn{
@@ -71,6 +85,11 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 
     &__title{
         font-size: 1.2rem;
+        @include media-breakpoint-down(sm){
+            font-size: 1rem;
+         }
+
+
     }
     &__link{
         font-size: 1rem;

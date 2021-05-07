@@ -80,8 +80,6 @@ const express = require ("express"),
        
     });
 
-
-
     // rendering login page with ejs and it's own custom javascript file
     router.get("/login",forwardAuthenticated,(req,res) => {
 
@@ -116,6 +114,27 @@ const express = require ("express"),
         res.redirect('/users/login');
     })
 
+
+    // reset password route 
+    router.post('/reset', (req,res) => {
+        
+        const useremail = req.body;
+
+        if(!useremail){
+            req.flash('error_msg', 'Email field is empty');
+        }
+
+        User.findOne({email:useremail})
+        .then(user => {
+
+            if(!user){
+                console.log('not here')
+            }
+        })
+        
+    
+        
+    })
 
     
 

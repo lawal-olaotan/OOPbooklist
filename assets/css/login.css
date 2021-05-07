@@ -11496,9 +11496,38 @@ fieldset:disabled .btn {
 
 .login__wrapper {
   background: #fff;
-  width: 35%;
   -webkit-box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
           box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+@media (max-width: 575.98px) {
+  .login__wrapper {
+    width: 90%;
+  }
+}
+
+@media (min-width: 768px) {
+  .login__wrapper {
+    width: 45%;
+  }
+}
+
+@media (min-width: 992px) {
+  .login__wrapper {
+    width: 35%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .login__wrapper {
+    width: 32%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .login__wrapper {
+    width: 28%;
+  }
 }
 
 .login__btn {
@@ -11513,6 +11542,12 @@ fieldset:disabled .btn {
 
 .login__title {
   font-size: 1.2rem;
+}
+
+@media (max-width: 575.98px) {
+  .login__title {
+    font-size: 1rem;
+  }
 }
 
 .login__link {
