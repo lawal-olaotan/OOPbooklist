@@ -19,10 +19,14 @@ const app = express();
 app.use(express.urlencoded({extended: true }))
 app.use(express.json())
 
+const db = require('./config/keys').mongoURI;
 
-// set up database 
-let mongoDB = 'mongodb://127.0.0.1/my_userBase'
-mongoose.connect(mongoDB,{useNewUrlParser:true,useUnifiedTopology:true})
+
+
+// // set up database 
+// let mongoDB = 'mongodb://127.0.0.1/my_userBase'
+
+mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(()=> console.log('connected,,'))
 .catch((err) => console.log(err));
 
