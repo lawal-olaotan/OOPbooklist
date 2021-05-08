@@ -7,6 +7,7 @@ const flash = require('connect-flash');
 const session = require ('express-session');
 
 const passport = require ('passport');
+
 // passport comfig 
 require("./config/passport")(passport)
 
@@ -43,6 +44,8 @@ app.use(session({
 // passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+
 
 // connecting flash 
 app.use(flash());

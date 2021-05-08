@@ -34,13 +34,15 @@
                 
             </form>
 
-            <form id="ResetForm"  class="container login__container needs-validation showform" method="POST" action="http://localhost:5505/users/reset">
+            <form id="ResetForm"  class="container login__container needs-validation showform" novalidate>
                
                 <div class="mb-3 d-flex justify-content-between align-items-center flex-wrap mb-2">
                     <h3 class="login__title">Reset Password</h3>    
                     <a id="forgetlogin" class="login__link" href="#">login Instead</a>
                 </div>
                 
+                    <p id="forgeterror" class="mb-3 servermessage"></p>
+                    
                 <div class="form-floating login__inputcont mb-3">
                     <input type="email" name="email" id="email" class="form-control" aria-describedby="emailHelp" placeholder="Email Address" required>
                     <label for="email">Email Address</label>
@@ -48,7 +50,38 @@
                 </div>
 
             
-                <button id="signupbtn" class="login__btn btn w-100 py-2" type="submit">Reset Password</button>
+                <button id="resetbtn" class="login__btn btn w-100 py-2" type="submit">Reset Password</button>
+                
+            </form>
+
+            <form id="passwordForm"  class="container login__container needs-validation p-0 showform">
+               
+                <div class="mb-3 d-flex justify-content-between align-items-center flex-wrap mb-2">
+                    <h3 class="login__title">Set New Password</h3>    
+                </div>
+
+                <p class="mb-3 servermessage"></p>
+                
+                <div class="form-floating login__inputcont mb-3">
+                    <input type="email" name="email" id="email" class="form-control" aria-describedby="emailHelp" placeholder="Email" value="" disabled>
+                    <label for="email">Email Address</label>
+                    <span  class="message form-text"></span>
+                </div>
+
+                <div class="form-floating login__inputcont mb-3">
+                    <input type="password" name="password" id="password" class="form-control" aria-describedby="emailHelp" placeholder="Password" required>
+                    <label for="resetpass1">New Password</label>
+                    <span  class="message form-text"></span>
+                </div>
+
+                <div class="form-floating login__inputcont mb-3">
+                    <input type="password" name="confirmpass" id="confirmpass" class="form-control" aria-describedby="passhelp" placeholder="Email Address" required>
+                    <label for="confirmpass">Confirm Password</label>
+                    <span class="message form-text"></span>
+                </div>
+
+                
+                <button id="signupbtn" class="login__btn btn w-100 py-2" type="submit">Set Password</button>
                 
             </form>
 

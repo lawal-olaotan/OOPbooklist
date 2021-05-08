@@ -108,32 +108,72 @@ const express = require ("express"),
         })(req,res,next)
     })
 
+   
+
     router.get("/logout",(req,res,)=>{
         req.logout();
         req.flash('success_msg', 'You successfully logged out');
         res.redirect('/users/login');
     })
 
+    let resetemail;
 
-    // reset password route 
+    // This route checks if user is registered or not
     router.post('/reset', (req,res) => {
-        
-        const useremail = req.body;
+        const userReset= req.body;
 
-        if(!useremail){
-            req.flash('error_msg', 'Email field is empty');
+        if(!userReset.email){
+            res.json({status:"noinput"});
+        }else{
+            User.findOne({email:userReset.email})
+            .then((user)=>{
+                if(user){
+                   res.status(200).json({status:"successful"});
+                   resetemail = userReset.email;   
+                }else{ 
+                    res.json({status:"norecord"});
+                }
+            })
+        }
+       
+    })
+
+
+    // route to change password
+    router.post('/updatePass', (req,res)=>{
+
+        const resetData = req.body;
+        resetData.email = resetemail;
+        
+        if(!resetData.password || !resetData.confirmpassword ){
+            res.json({status:"checkpassword"});
         }
 
-        User.findOne({email:useremail})
-        .then(user => {
+        if(resetData.password !== resetData.confirmpassword ){
+            res.json({status:"passnomatch"});
+        }
 
-            if(!user){
-                console.log('not here')
-            }
+        User.findOne({email:resetData.email})
+        .then(user=>{
+
+            // bcryptjs.genSalt(10,(err,salt) => {
+            //             bcryptjs.hash(newUser.password,salt, (err,hash)=>{
+            //                 if(err) throw err; 
+            //                 newUser.password = hash;
+            //                 newUser.save()
+            //                 .then( user => {
+            //                     req.flash('success_msg','You have now registered!');
+            //                     res.status(200).json({status:"successful"});             
+            //                 })
+            //                 .catch(err => console.log(err));
+            //             })
+            //         })
+
         })
         
-    
         
+
+       
     })
 
     

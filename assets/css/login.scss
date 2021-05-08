@@ -151,10 +151,16 @@ $navbar-dark-brand-hover-color:$book-keeperbg;
 }
 
 .errornotification{
-    padding: .5rem 1rem ;
-    width: fit-content;
-    background-color: red;
-    color: $neutral;
+   padding: .25rem 1rem ;
+   font-size: .8rem !important;
+   width: fit-content;
+   background-color: red;
+   color: $neutral;
+   border-radius: 8px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   -ms-border-radius: 8px;
+   -o-border-radius: 8px;
 }
 
 .successnotification{

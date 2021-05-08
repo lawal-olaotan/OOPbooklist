@@ -190,27 +190,25 @@ document.addEventListener('DOMContentLoaded',function(){
             .then(res => {
                 let serverMess = document.querySelector('#servermess');
 
-                if(res.data.status === 'exists'){
+                if(res.data){
+
+                    if(res.data.status === 'exists'){
                         serverMess.textContent = 'This user is already registered';
                         serverMess.classList.add('errornotification')
-                }
+                    }
 
-                if(res.data.status === 'inputerror'){
+                    if(res.data.status === 'inputerror'){
                         let serverMess = document.querySelector('#servermess');
                         serverMess.textContent = 'All fields are required';
                         serverMess.classList.add('errornotification')
-                }
+                    }
 
-                if(res.data){
                     if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
 
                         signUpFormBtn.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>';
                         setTimeout(function(){
                             window.location.assign('http://localhost:5505/users/login');
-                        },2000)
-
-
-                        
+                        },2000) 
                     }
                 }
             }).catch(error=>{
