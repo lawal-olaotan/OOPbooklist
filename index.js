@@ -21,18 +21,9 @@ app.use(express.json())
 
 const db = require('./config/keys').mongoURI;
 
-
-
-// // set up database 
-// let mongoDB = 'mongodb://127.0.0.1/my_userBase'
-
 mongoose.connect(db,{useNewUrlParser:true,useUnifiedTopology:true})
 .then(()=> console.log('connected,,'))
 .catch((err) => console.log(err));
-
-
-// let db = mongoose.connection;
-// db.on('error',console.error.bind(console,'MongoDB connection error'))
 
 
 // serve statics

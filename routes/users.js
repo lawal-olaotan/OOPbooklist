@@ -75,9 +75,7 @@ const express = require ("express"),
               
                 }
 
-           });
-
-       
+           });  
     });
 
     // rendering login page with ejs and it's own custom javascript file
@@ -98,6 +96,7 @@ const express = require ("express"),
         })
 
     });
+
 
     // handles user login routes with serverside rendering for security purpose
     router.post("/login",(req,res,next) => {
@@ -142,7 +141,7 @@ const express = require ("express"),
     // route to change password
     router.post('/updatePass', (req,res)=>{
 
-        const resetData = req.body;
+        let resetData = req.body;
         resetData.email = resetemail;
         
         if(!resetData.password || !resetData.confirmpassword ){
@@ -153,28 +152,36 @@ const express = require ("express"),
             res.json({status:"passnomatch"});
         }
 
-        User.findOne({email:resetData.email})
-        .then(user=>{
 
-            // bcryptjs.genSalt(10,(err,salt) => {
-            //             bcryptjs.hash(newUser.password,salt, (err,hash)=>{
-            //                 if(err) throw err; 
-            //                 newUser.password = hash;
-            //                 newUser.save()
-            //                 .then( user => {
-            //                     req.flash('success_msg','You have now registered!');
-            //                     res.status(200).json({status:"successful"});             
-            //                 })
-            //                 .catch(err => console.log(err));
-            //             })
-            //         })
+        bcryptjs.genSalt(10,(err,salt) => {
+            bcryptjs.hash(resetData.password,salt, (err,hash)=>{
+                if(err) throw err; 
+                let myQuery = {email:resetData.email};
+                let newpass = {$set:{password:hash},};
+                const options = {upsert:true};
 
+                User.updateOne(myQuery,newpass,options)
+                .then((user)=>{
+                    if(user){
+                        res.status(200).json({status:"successful"});
+                    }
+                     
+                })
+                .catch(err => console.log(err));
+            })
         })
+
         
+      
         
 
-       
-    })
+        // User.updateOne(myQuery,newpass, function(err){
+        //     if (err) throw err;
+        //     res.status(200).json({status:"successful"});
+        // });
+        
+    
+    });
 
     
 

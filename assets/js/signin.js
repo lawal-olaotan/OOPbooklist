@@ -77,16 +77,18 @@ document.addEventListener('DOMContentLoaded', function(){
         .then(res => {
             if(res.data){
 
-                serverResponse('checkpassword','All fields are required');
+                serverResponse(res,'checkpassword','All fields are required');
 
-                serverResponse('passnomatch','Password do not match');
+                serverResponse(res,'passnomatch','Password do not match');
 
                 if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
 
-                    resetBtn.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>';
+                    const setPass = document.querySelector('#setpass');
+
+                    setPass.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>';
 
                     setTimeout(function(){
-                        window.location.replace("http://localhost/users/login")
+                        window.location.reload();
                     },2000) 
                 }
                 
@@ -114,7 +116,7 @@ function showAndHideLogin(e){
    
 }
 
-function serverResponse(statusmess,errormessage){
+function serverResponse(res,statusmess,errormessage){
 
     if(res.data.status === statusmess){
         forgeterror.textContent = errormessage;
