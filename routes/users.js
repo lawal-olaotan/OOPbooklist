@@ -9,12 +9,8 @@ const express = require ("express"),
     const {initialElements} = funs;
     const passport = require('passport');
 
-    const { forwardAuthenticated } = require('../config/auth');
+    const {forwardAuthenticated} = require('../config/auth');
   
-
-
-    
-    
     // registeration route
     // this route renders the registeration form
     router.get("/register",forwardAuthenticated,(req,res) => {
@@ -101,7 +97,7 @@ const express = require ("express"),
     // handles user login routes with serverside rendering for security purpose
     router.post("/login",(req,res,next) => {
         passport.authenticate ('local', {
-            successRedirect:'/dashboard',
+            successRedirect:'/dashboard/books',
             failureRedirect:'/users/login',
             failureFlash:true,
         })(req,res,next)

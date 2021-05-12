@@ -45,25 +45,26 @@ router.get("/bestsellers",(req,res) => {
     })
 });
 
-// best dashbaord route
-router.get("/dashboard",ensureAuthenicated,(req,res) => {
 
-    const elements = [...initialElements,"../assets/js/list.js","../assets/css/list.min.css",];
+// // best dashbaord route
+// router.get("/dashboard",ensureAuthenicated,(req,res) => {
 
-    const meta = funs.meta({
-        description: "",
-        keywords:"top 10 best sellers, where to keep books",
-    },req)
+//     const elements = [...initialElements,"../assets/js/list.js","../assets/css/list.min.css",];
 
-    res.render("dashboard",{
-        title: "Book-keeper™ | dashboard",
-        user:req.user,
-        meta,
-        elements,
-        path:funs.pathToTheRoot(req._parsedUrl.path),
+//     const meta = funs.meta({
+//         description: "",
+//         keywords:"top 10 best sellers, where to keep books",
+//     },req)
 
-    })
-});
+//     res.render("dashboard",{
+//         title: "Book-keeper™ | dashboard",
+//         user:req.user,
+//         meta,
+//         elements,
+//         path:funs.pathToTheRoot(req._parsedUrl.path),
+
+//     })
+// });
 
 
 
