@@ -2,6 +2,8 @@ const express = require ("express"),
     funs = require ('../functions'),
     router = express.Router();
 
+    const Books = require("../models/user")
+
 // global variables
 const {initialElements} = funs;
 
@@ -11,6 +13,19 @@ const User = require("../models/user");
 
 
 const {ensureAuthenicated} = require ("../config/auth");
+
+router.post("/mybooks", (req,res)=> {
+    const books = req.body;
+    books.user = req.user.UserName;
+    console.log(books);
+    res.status(200).json({status:"successful"});
+    
+})
+
+
+
+
+
 
 
 router.get("/main/:id",ensureAuthenicated,(req,res)=> {

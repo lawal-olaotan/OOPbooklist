@@ -46,33 +46,4 @@ router.get("/bestsellers",(req,res) => {
 });
 
 
-// // best dashbaord route
-// router.get("/dashboard",ensureAuthenicated,(req,res) => {
-
-//     const elements = [...initialElements,"../assets/js/list.js","../assets/css/list.min.css",];
-
-//     const meta = funs.meta({
-//         description: "",
-//         keywords:"top 10 best sellers, where to keep books",
-//     },req)
-
-//     res.render("dashboard",{
-//         title: "Book-keeper™ | dashboard",
-//         user:req.user,
-//         meta,
-//         elements,
-//         path:funs.pathToTheRoot(req._parsedUrl.path),
-
-//     })
-// });
-
-
-
-
-
-
-
-
-
-
 module.exports = router;
