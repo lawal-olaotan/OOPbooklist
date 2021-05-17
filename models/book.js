@@ -4,7 +4,7 @@ const mongoose = require('mongoose'),
 
 BookSchema = new mongoose.Schema({
     
-    booktitle:{
+    title:{
         type:String,
         required:true
     },
@@ -12,19 +12,18 @@ BookSchema = new mongoose.Schema({
         type:String,
         required:true  
     },
-    description: {
-        type:String,
-        required:true 
-    },
-    reviews: {
+    review: {
         type:String,
         required:true
     },
     buylink: {
         type:String,
-        required:true
     },
-    user: {type:mongoose.Schema.ObjectId, ref: 'User'},
+    user: {
+        type:mongoose.Schema.ObjectId,
+         ref: 'User',
+         required: true,
+        }
 
 }),
 

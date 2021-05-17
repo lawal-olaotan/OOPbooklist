@@ -6,6 +6,7 @@ const bcryptjs = require ("bcryptjs");
 
 // we need to fetch our users details from our database
 const User = require('../models/user');
+const Books = require('../models/book');
 
 
 module.exports = function (passport){

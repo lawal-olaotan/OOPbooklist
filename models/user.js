@@ -1,5 +1,6 @@
 const mongoose = require('mongoose'),
 
+
 UserSchema = new mongoose.Schema({
     
     UserName:{
@@ -18,34 +19,14 @@ UserSchema = new mongoose.Schema({
         type:Date,
         default:Date.now
     },
+    books:[{
+        type:mongoose.Schema.ObjectId,
+        ref: 'Books',
+    }]
 
 }),
 
-// BookSchema = new mongoose.Schema({
-    
-//     booktitle:{
-//         type:String,
-//         required:true
-//     },
-//     author: {
-//         type:String,
-//         required:true  
-//     },
-//     description: {
-//         type:String,
-//         required:true 
-//     },
-//     reviews: {
-//         type:String,
-//         required:true
-//     },
-//     buylink: {
-//         type:String,
-//         required:true
-//     },
-//     user: {type:mongoose.Schema.ObjectId, ref: 'User'},
 
-// }),
 
 
 

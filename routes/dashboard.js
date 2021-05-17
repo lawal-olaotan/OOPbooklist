@@ -2,7 +2,8 @@ const express = require ("express"),
     funs = require ('../functions'),
     router = express.Router();
 
-    const Books = require("../models/user")
+// Books schema 
+const Book = require("../models/book");
 
 // global variables
 const {initialElements} = funs;
@@ -11,15 +12,24 @@ const bcryptjs = require ("bcryptjs");
 // getting user schema 
 const User = require("../models/user");
 
-
 const {ensureAuthenicated} = require ("../config/auth");
 
-router.post("/mybooks", (req,res)=> {
-    const books = req.body;
-    books.user = req.user.UserName;
-    console.log(books);
-    res.status(200).json({status:"successful"});
+
+router.post("/mybooks", (req, res)=> {
+
+        const book = new Book(req.body);
+        book.user = req.user._id;
+        book.save();
     
+        User.findById({_id: book._id})
+       .then( user => {
+        user.books.push(book);
+        user.save();
+       console.log(user);
+        res.status(200).json({status:"successful"});
+
+       }).catch(err => console.error(err));
+
 })
 
 

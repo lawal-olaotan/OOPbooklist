@@ -11585,6 +11585,7 @@ fieldset:disabled .btn {
 
 .book__cta {
   color: #0B959E;
+  font-size: .8rem;
 }
 
 .book__cta:hover {

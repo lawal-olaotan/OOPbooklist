@@ -1,5 +1,6 @@
 
 const bookForm = document.querySelector('#bookform');
+var bookData,buylink,reviewlink;
 
 
 
@@ -10,57 +11,77 @@ document.addEventListener('DOMContentLoaded', function(){
     bookForm.addEventListener('submit', e=>{
 
         e.preventDefault();
-        
+ 
         
         let title = bookForm.title,
             author = bookForm.author,
-            recom = bookForm.recom,
-            data = {title:title.value,author:author.value,recom:recom.value};
-            axios.post('/dashboard/mybooks', data)
-            .then(res => {
+            recom = bookForm.recom;
 
-                if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
-                    console.log(data)
-                }
-            })
-
-            
+            bookData = {title:title.value,author:author.value,recom:recom.value}
+            getLinks(author.value,title.value);
+           getReview(author.value,title.value);
+           
 
     })
+
+   
 
 }); 
 
 
-
-// function addBooks(data){
-
-//     const bookwrapper = document.querySelector('#bookwrapper');
-
+function getLinks(author,title){
     
-//     const bookTemp = `<div class="book__bookitem my-3 d-flex align-items-center justify-content-between p-3">
+    axios.get('https://www.googleapis.com/books/v1/volumes?q='+ title + "+inauthor:"+author+"&key="+"AIzaSyC1fXjcENg0nomgwn8cDCYxaTBCS2dUSlk")
+    .then(data => {
 
-//                         <div class="book__bookcontent">
-//                             <p class="book__text m-0 fw-bold"><span>Book Title: ${data.booktitle}</span></p>
-//                             <hr class="book__divider">
-//                             <p class="book__text m-0"><span>Author :${data.author}</span></p>
-//                             <hr class="book__divider">
-//                             <p class="book__text m-0"><span>Recommended By: ${data.recom}</span></p>
-//                         </div>
+        if(data){
+             buylink = data.data.items[0].saleInfo.buyLink;
+             bookData.buylink = buylink;
+        }else{
+            console.log('book not registered')
+        }
+    })
+    .catch(error=>{
+        console.log(error)
+    })
 
-//                         <div class="book__bookaction d-flex flex-column align-items-center">
-//                             <a href="#"class="book__cta py-2 px-4 mb-3 rounded-3">Reviews</a>
-//                             <a href="#" class="book__cta p-2 rounded-3">Buy Online</a>
-//                         </div>
-//                     </div>`;
+ }
 
 
-//                     if(data.length){
-//                         reviewcarol.classList.add('is-draggable');
-//                         bookwrapper.innerHTML = ''
-            
-//                         bookwrapper.insertAdjacentHTML("afterbegin",bookTemp)
-                       
-//                     }
 
-    
-// }
+function getReview(author,title){
+
+    axios.get('https://api.nytimes.com/svc/books/v3/reviews.json?title=' + title +'&author='+ author+'&api-key=yHo5Zw1Leq9PI2WacGtwhmmRNWaUdWEM')
+    .then(data => {
+
+        if(data){
+             reviewlink = data.data.results[0].url;
+             bookData.review = reviewlink;
+             sendData(bookData);
+        }else{
+            console.log('book not registered')
+        }
+    })
+    .catch(error=>{
+        console.log(error)
+    })
+
+ }
+
+
+
+function sendData(data){
+
+    axios.post('/dashboard/mybooks',data)
+            .then(res => {
+
+                if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
+                    console.log(data);
+                }
+            }).catch(error=>{
+                console.log(error)
+            })
+
+}
+
+
