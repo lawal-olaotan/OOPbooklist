@@ -148,7 +148,6 @@ const express = require ("express"),
             res.json({status:"passnomatch"});
         }
 
-
         bcryptjs.genSalt(10,(err,salt) => {
             bcryptjs.hash(resetData.password,salt, (err,hash)=>{
                 if(err) throw err; 

@@ -64,25 +64,40 @@
                 </div>
 
                 <div id="bookwrapper" class="book__listwrapper d-flex flex-wrap align-items-center justify-content-between">
-                    <div class="book__bookitem my-3 d-flex align-items-center justify-content-between p-3">
-                                <div class="book__bookcontent">
-                                    <p class="book__text m-0 fw-bold"><span>Book Title: ${data.booktitle}</span></p>
-                                    <hr class="book__divider">
-                                    <p class="book__text m-0"><span>Author :${data.author}</span></p>
-                                    <hr class="book__divider">
-                                    <p class="book__text m-0"><span>Recommended By: ${data.recom}</span></p>
+                    
+                    <% if(typeof bookdata !== 'undefined'){
+
+                    for(let i = 0; i < bookdata.length; i++){%>
+
+                    
+                        <div class="book__bookitem my-3 d-flex align-items-center justify-content-between p-3">
+                            <div class="book__bookcontent">
+                                <p class="book__text m-0 fw-bold"><span>Title : <%= bookdata[i].title %></span></p>
+                                <hr class="book__divider">
+                                <p class="book__text m-0"><span>Author: <%= bookdata[i].author %></span></p>
+                                <hr class="book__divider">
+                                <p class="book__text m-0"><span>Recommended by : <%= bookdata[i].recom %></span></p>
+                            </div>
+
+                            <div class="book__bookaction d-flex flex-column align-items-center">
+                                    <a href="<%= bookdata[i].review %>"class="book__cta px-2 py-2 mb-3 rounded-3">View review</a>
+                                    <a href="<%= bookdata[i].buylink %>" class="book__cta p-2 rounded-3">Buy Online</a>
                                 </div>
-        
-                                <div class="book__bookaction d-flex flex-column align-items-center">
-                                        <a href="#"class="book__cta px-2 py-2 mb-3 rounded-3">View review</a>
-                                        <a href="#" class="book__cta p-2 rounded-3">Buy Online</a>
-                                    </div>
-                                </div>
-                    </div>
+                            </div>
+                        
+                       
+                        </div>
+                        <%}   
+                    }%>   
+               
                 </div>
 
             </div>    
        
     </div>
+
+    
  </main>
-   
+
+
+

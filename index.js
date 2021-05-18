@@ -45,6 +45,13 @@ app.use(passport.session());
 // connecting flash 
 app.use(flash());
 
+// EJS templating engine
+app.use(ejs)
+app.set('layout','./layout');
+app.set('views','./views');
+app.set("view engine" , "ejs");
+app.use(require('./functions').useLocals);
+
 
 // global variables
 app.use((req,res,next)=> {
@@ -54,14 +61,6 @@ app.use((req,res,next)=> {
     next();
 
 });
-
-
-// EJS templating engine
-app.use(ejs)
-app.set('layout','./layout');
-app.set('views','./views');
-app.set("view engine" , "ejs");
-app.use(require('./functions').useLocals);
 
 
 // Routes 

@@ -14,7 +14,10 @@ BookSchema = new mongoose.Schema({
     },
     review: {
         type:String,
-        required:true
+    },
+    recom: {
+        type:String,
+        required:true,
     },
     buylink: {
         type:String,
@@ -23,7 +26,7 @@ BookSchema = new mongoose.Schema({
         type:mongoose.Schema.ObjectId,
          ref: 'User',
          required: true,
-        }
+    }
 
 }),
 

@@ -6,7 +6,6 @@ var bookData,buylink,reviewlink;
 
 
 document.addEventListener('DOMContentLoaded', function(){
-
     
     bookForm.addEventListener('submit', e=>{
 
@@ -37,8 +36,9 @@ function getLinks(author,title){
         if(data){
              buylink = data.data.items[0].saleInfo.buyLink;
              bookData.buylink = buylink;
-        }else{
-            console.log('book not registered')
+        }else if(data === 'undefined'){
+            buylink.textContent = '#'
+            bookData.buylink = buylink;
         }
     })
     .catch(error=>{
@@ -58,9 +58,11 @@ function getReview(author,title){
              reviewlink = data.data.results[0].url;
              bookData.review = reviewlink;
              sendData(bookData);
-        }else{
-            console.log('book not registered')
         }
+
+      
+
+        
     })
     .catch(error=>{
         console.log(error)
