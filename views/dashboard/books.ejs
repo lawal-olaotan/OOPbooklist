@@ -62,42 +62,56 @@
                     </div>
                    
                 </div>
-
+                <!-- this is the wrapper  -->
                 <div id="bookwrapper" class="book__listwrapper d-flex flex-wrap align-items-center justify-content-between">
-                    
-                    <% if(typeof bookdata !== 'undefined'){
-
+                
+                    <%  if(typeof bookdata !== 'undefined'){
+                        
                     for(let i = 0; i < bookdata.length; i++){%>
 
-                    
-                        <div class="book__bookitem my-3 d-flex align-items-center justify-content-between p-3">
-                            <div class="book__bookcontent">
-                                <p class="book__text m-0 fw-bold"><span>Title : <%= bookdata[i].title %></span></p>
-                                <hr class="book__divider">
-                                <p class="book__text m-0"><span>Author: <%= bookdata[i].author %></span></p>
-                                <hr class="book__divider">
-                                <p class="book__text m-0"><span>Recommended by : <%= bookdata[i].recom %></span></p>
-                            </div>
+                        <!-- cards  -->
+                        <div class="book__bookitem my-3 d-flex align-items-center justify-content-between p-3"> 
 
+                            <div class="book__bookcontent">
+                                <div class="container d-flex align-items-center m-0 p-0">
+                                    <div class="book__cover me-3">
+                                        <img class="book__img" src="<%= bookdata[i].images %>" alt="author cover" >
+                                    </div>
+                                    <p class="book__text m-0 "><span><%= bookdata[i].title %> by <%= bookdata[i].author %> </span></p>
+                                    
+                                </div>
+                                
+                                <hr class="book__divider">
+                                <p class="book__descrip m-0"><span><%= bookdata[i].descrip %></span></p>
+                                <hr class="book__divider">
+                                <p class="book__text m-0"><span>Recommended by : <%= bookdata[i].recom%> </span></p>
+                            </div>
+                
                             <div class="book__bookaction d-flex flex-column align-items-center">
-                                    <a href="<%= bookdata[i].review %>"class="book__cta px-2 py-2 mb-3 rounded-3">View review</a>
-                                    <a href="<%= bookdata[i].buylink %>" class="book__cta p-2 rounded-3">Buy Online</a>
+                                    <span class="rounded-3"><%= bookdata[i].rating %></span>
+                                    <span class="mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></span>
+                                    <a href="<%= bookdata[i].review %>" class="book__cta p-2 rounded-3">View Review</a>
                                 </div>
                             </div>
                         
-                       
                         </div>
-                        <%}   
-                    }%>   
-               
+                     <%}
+                   
+                     }%>
+                    
                 </div>
 
             </div>    
        
     </div>
 
-    
  </main>
+
+ <script>
+   
+ </script>
+
+ 
 
 
 

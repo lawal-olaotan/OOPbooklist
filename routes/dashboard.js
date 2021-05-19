@@ -25,7 +25,6 @@ router.post("/mybooks", (req, res)=> {
        .then( user => {
         user.books.push(book);
         user.save();
-       console.log(user);
         res.status(200).json({status:"successful"});
 
        }).catch(err => console.error(err));
@@ -84,15 +83,15 @@ router.get("/:books",ensureAuthenicated,(req,res) => {
 
         Book.find({},function(err,data){
             
-        res.render('dashboard/'+ books, {
-            elements,
-            meta,
-            user:req.user,
-            bookdata:data,
-            active: books,
-            title: "Book-keeper™ | dashboard",
-            path:funs.pathToTheRoot(req._parsedUrl.path),
-        });
+            res.render('dashboard/'+ books, {
+                elements,
+                meta,
+                user:req.user,
+                bookdata:data,
+                active: books,
+                title: "Book-keeper™ | dashboard",
+                path:funs.pathToTheRoot(req._parsedUrl.path),
+            });
 
     });  
 });

@@ -19,8 +19,17 @@ BookSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    buylink: {
+    images: {
         type:String,
+        required:true,
+    },
+    rating: {
+        type:String,
+        required:true,
+    },
+    descrip: {
+        type:String,
+        required:true,
     },
     user: {
         type:mongoose.Schema.ObjectId,
