@@ -3,9 +3,58 @@ const bookForm = document.querySelector('#bookform');
 let bookData,buylink,reviewlink;
 
 
+const bookItems = document.querySelectorAll(".book__bookitem"),
+        prev = document.querySelector("#prev"),
+        next = document.querySelector("#next"),
+        bookwrapper = document.querySelector("#bookwrapper");
 
+
+let row = 4,
+currentPage = 1,
+ bookArray = Array.from(bookItems),
+ pagecount = Math.ceil(bookArray.length/row);
+
+
+
+
+function displayBooks (books,wrapper,row,page){
+
+    wrapper.innerHTML = '';
+    page--;
+    let start = row * page;
+    let end = start + row;
+    let paginatedBooks = books.slice(start,end);
+
+    for(book of paginatedBooks){
+        wrapper.insertAdjacentElement('afterbegin', book);
+    }
+
+}
+
+
+let bookDel = document.querySelectorAll(".book__delete");
 
 document.addEventListener('DOMContentLoaded', function(){
+
+    for(let del of bookDel ){
+        del.addEventListener('click', e=>{
+            let bookId = e.target.parentElement.parentElement.id;
+            bookId = {bookId};
+            axios.post('/dashboard/deletebooks',bookId)
+            .then(res => {
+
+                if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
+                    window.location.replace("http://localhost:5505/dashboard/books") 
+                     
+                }
+
+            }).catch(error=>{
+                console.log(error)
+            })
+        })
+    }
+        
+    
     
     bookForm.addEventListener('submit', e=>{
 
@@ -22,7 +71,25 @@ document.addEventListener('DOMContentLoaded', function(){
 
     })
 
-   
+    prev.addEventListener('click', e=> {
+        if(currentPage > 1){
+            currentPage--;
+            displayBooks (bookArray,bookwrapper,row,currentPage)
+        }
+    })
+
+   next.addEventListener('click', e=>{
+        
+        if(pagecount > currentPage){
+            currentPage++;
+            displayBooks (bookArray,bookwrapper,row,currentPage)
+        }
+   })
+
+    displayBooks (bookArray,bookwrapper,row,currentPage)
+
+
+    
 
 }); 
 
@@ -74,7 +141,7 @@ function getLinks(author,title){
              let discripArry;
             
              if(descrip !== undefined){
-                 descripArry = descrip.split(/[•.]/);
+                 descripArry = descrip.split(/[•./]/);
              }else{
                  descrip = volLink2.description;
                   descripArry = descrip.split(/[•.]/);
@@ -94,29 +161,6 @@ function getLinks(author,title){
  }
 
 
-
-// function getReview(author,title){
-
-//     axios.get('https://api.nytimes.com/svc/books/v3/lists/best-sellers/history.json?title=' + title +'&author='+ author+'&api-key=yHo5Zw1Leq9PI2WacGtwhmmRNWaUdWEM')
-//     .then(data => {
-
-//         if(data){
-//              let results = data.data.results
-            
-//         }
-
-//         console.log(bookData);
-//         // sendData(bookData);
-        
-//     })
-//     .catch(error=>{
-//         console.log(error)
-//     })
-
-//  }
-
-
-
 function sendData(data){
 
     axios.post('/dashboard/mybooks',data)
@@ -130,5 +174,11 @@ function sendData(data){
             })
 
 }
+
+
+
+
+
+
 
 

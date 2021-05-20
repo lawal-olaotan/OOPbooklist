@@ -11536,6 +11536,16 @@ fieldset:disabled .btn {
   border: 1px solid #0B959E;
 }
 
+.book__delete {
+  text-decoration: none;
+  display: none;
+  position: absolute;
+  top: 1pc;
+  right: 1pc;
+  font-size: 24px;
+  color: #0B959E;
+}
+
 .book__btn {
   border: none;
   font-size: 20px;
@@ -11559,7 +11569,10 @@ fieldset:disabled .btn {
 }
 
 .book__bookitem {
+  position: relative;
   width: 47%;
+  max-height: 200px;
+  height: 200px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -11573,6 +11586,11 @@ fieldset:disabled .btn {
 .book__bookitem:hover {
   -webkit-box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
           box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+}
+
+.book__bookitem:hover .book__delete {
+  display: block;
+  text-decoration: none;
 }
 
 .book__text {
@@ -11625,6 +11643,10 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  text-decoration: none !important;
+}
+
 .dashboard {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11636,6 +11658,10 @@ a {
 
 .primary {
   background-color: #0B959E;
+  color: #FFF;
+}
+
+.primary:hover {
   color: #FFF;
 }
 /*# sourceMappingURL=dash.css.map */

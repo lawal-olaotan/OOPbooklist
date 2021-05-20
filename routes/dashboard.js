@@ -32,9 +32,18 @@ router.post("/mybooks", (req, res)=> {
 })
 
 
+router.post("/deletebooks", (req,res)=> {
 
+    const bookID = req.body;
 
-
+    let Query = {title:bookID.bookId}
+    Book.deleteOne(Query, function (err,obj){
+        if(err) throw err;
+        console.log('deleted')
+        res.status(200).json({status:"successful"});
+    })
+    
+})
 
 
 router.get("/main/:id",ensureAuthenicated,(req,res)=> {
@@ -81,7 +90,7 @@ router.get("/:books",ensureAuthenicated,(req,res) => {
             keywords:"top 10 best sellers, where to keep books",
         },req)
 
-        Book.find({},function(err,data){
+        Book.find({"user": req.user._id},function(err,data){
             
             res.render('dashboard/'+ books, {
                 elements,
