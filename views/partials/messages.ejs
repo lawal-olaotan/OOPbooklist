@@ -1,10 +1,13 @@
 
+
+
+
 <% if(success_msg!= '') { %>
-    <p class="successnotification errornotification"><%=success_msg %> </p>
+    <p class="successnotification errornotification p-1"><%=success_msg %> </p>
   <% } %>
 
 <% if(error_msg != '') { %>
-  <p class="errornotification"><%= error_msg %></p> 
+  <p class="errornotification p-1"><%= error_msg %></p> 
   <% } %> 
 <% if(error != '') { %>
    <p class="errornotification"><%= error %> </p>

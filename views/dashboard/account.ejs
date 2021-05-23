@@ -1,0 +1,90 @@
+<main class=dashboard>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Delete Account</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            <span>Are you sure you want to erase all your data</span>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+              <a id="<%= user.email %>"  onclick="deleAcc(event)" href="#" type="button" class="btn primary ">Delete Account</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+    <%- include('./dashnav.ejs') %>
+
+    <div class="book" >
+        <div class="book__titlecon mb-2 d-flex align-items-center">
+            <a class="book__toggleBtn" type="submit" href="#"><i class="fas fa-bars"></i></a>
+                <h2 class="book__acctitle"><span>Account Settings</span></h2>
+               
+    </div>
+        <div class="book__sucess mb-3">
+            <%- include('../partials/messages.ejs') %>
+        </div>
+
+        <div class="book__profile mb-3">
+            <p class="book__profiletitle"><span>Profile</span></p>
+            <div class="book__formwrapper w-50 mb-5">
+
+                <form class="mb-3" method="POST" action="/dashboard/updateName">
+                    <div class="m-0">
+                        <label for="exampleFormControlInput1" class="form-label mb-1">Name</label>
+                        <div class="d-flex w-100 align-items-center">
+                            <input type="text" class="book__profileinput form-control p-0" id="name" name="name" value="<%= user.UserName %>">
+                            <button class="book__updatebtn">Update</button>
+                        </div>
+                    </div>
+                </form>
+                
+                <form class="mb-5" method="POST" action="/dashboard/updateEmail">
+                        <div class="m-0">
+                            <label for="exampleFormControlInput1" class="form-label mb-1">Email</label>
+                            <div class="d-flex w-100 align-items-center">
+                                <input type="email" class="book__profileinput form-control p-0" name="email" value="<%= user.email %>">
+                                <button  class="book__updatebtn">Update</button>
+                            </div>
+                      </div>
+                </form>
+     
+                <div class="d-flex w-50 align-items-center mt-3">
+                    <a href="/users/logout" class="primary py-2 px-2">Reset Password</a>
+                </div>
+        
+            </div>
+
+        </div>
+
+        <div class="book__deletepro">
+            <a data-bs-toggle="modal" data-bs-target="#exampleModal"  href="#" class="book__deltitle mb-3"><span>Delete Account</span></a>
+            <p>This account will no longer be available and all saved data will be lost forever </p>
+        </div>
+    </div>
+
+
+</main>
+
+<script>
+function deleAcc(event){
+   let useremail =  event.target.id;
+
+   let data = {email:useremail};
+
+   axios.post('/dashboard/delUser',data)
+   .then( res => {
+            if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
+                window.location.replace("http://localhost:5505/") 
+            }
+    })
+
+}
+</script>

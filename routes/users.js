@@ -111,6 +111,8 @@ const express = require ("express"),
         res.redirect('/users/login');
     })
 
+    
+
     let resetemail;
 
     // This route checks if user is registered or not
@@ -165,19 +167,11 @@ const express = require ("express"),
                 .catch(err => console.log(err));
             })
         })
-
-        
-      
-        
-
-        // User.updateOne(myQuery,newpass, function(err){
-        //     if (err) throw err;
-        //     res.status(200).json({status:"successful"});
-        // });
-        
     
     });
 
+
+    
     
 
     module.exports = router;

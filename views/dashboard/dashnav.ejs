@@ -1,0 +1,33 @@
+<div class="dashnav">
+
+    <div class="dashnav__wrapper">
+
+        <div class="dashnav__logocon">
+            <a class="dashnav__logo" href="/">BOOK-KEEPER™</a>
+        </div>
+         <div class="dashnav__menu">
+            <a class="dashnav__links <%= active==='books'?'active':'' %>" href="/dashboard/books"><i class="fas fa-shield-alt"></i> Book Vault</a>
+            <a class="dashnav__links <%= active==='account'?'active':'' %>"  href="/dashboard/account"><i class="far fa-user"></i> Account</a>
+            <a  data-bs-toggle="modal" data-bs-target="#logoutModel"  class="dashnav__links <%= active==='logout'?'active':'' %>"  href=#"><i class="fas fa-sign-out-alt"></i> Log out</a>
+         </div>
+
+    </div>    
+</div>
+
+<div class="modal fade" id="logoutModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Log Out</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <span>Are you sure you want to logout of your account</span>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <a  href="/users/logout" type="button" class="btn primary ">Log Out</a>
+        </div>
+      </div>
+    </div>
+  </div>

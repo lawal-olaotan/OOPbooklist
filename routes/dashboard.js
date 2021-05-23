@@ -37,6 +37,7 @@ router.post("/deletebooks", (req,res)=> {
     const bookID = req.body;
 
     let Query = {title:bookID.bookId}
+
     Book.deleteOne(Query, function (err,obj){
         if(err) throw err;
         console.log('deleted')
@@ -44,6 +45,8 @@ router.post("/deletebooks", (req,res)=> {
     })
     
 })
+
+
 
 
 router.get("/main/:id",ensureAuthenicated,(req,res)=> {
@@ -81,7 +84,7 @@ router.get("/",ensureAuthenicated,(req,res)=> {
 
 router.get("/:books",ensureAuthenicated,(req,res) => {
     
-        const elements = [...initialElements,"../assets/js/dashboard.js","../assets/css/dash.min.css"];
+        const elements = [...initialElements,"../assets/js/dashboard.js","../assets/css/dash.min.css",];
         let books = req.params.books === '' ? 'books':req.params.books
 
 
@@ -105,7 +108,85 @@ router.get("/:books",ensureAuthenicated,(req,res) => {
     });  
 });
 
+router.post('/updateName', (req,res) => {
 
+    let resetData = req.body;
+    let user = req.user;
+    resetData.email = user.email;
+
+    if(user.UserName !== resetData.name){
+
+        let Query = {email:resetData.email}
+        let Newpara = {$set:{UserName:resetData.name},}
+        const options = {upsert:true}
+        
+        User.updateOne(Query,Newpara,options)
+        .then(user => {
+            if(user){
+                console.log('done');
+                req.flash('success_msg', 'Your name was updated');
+                res.redirect('/dashboard/account');
+            }
+        })
+
+    }else{
+        req.flash('success_msg', 'Values are same');
+        res.redirect('/dashboard/account');
+    }
+
+
+
+   
+  
+    
+   
+})
+
+
+router.post('/updateEmail', (req,res) => {
+
+    let resetData = req.body;
+    let user = req.user;
+    resetData.name = user.UserName;
+
+    let Query = {UserName:resetData.name}
+    let Newpara = {$set:{email:resetData.email},}
+    const options = {upsert:true}
+
+    if(user.email !== resetData.email){
+
+        User.updateOne(Query,Newpara,options)
+        .then(user => {
+            if(user){
+                console.log('done');
+                req.flash('success_msg', 'Email updated');
+                res.redirect('/dashboard/account');
+            }
+        })
+    }else{
+        req.flash('error_msg', 'Values are same')
+        res.redirect('/dashboard/account');
+    }
+
+   
+  
+    
+   
+})
+
+router.post('/delUser', (req,res)=> {
+    
+    let userData = req.body;
+
+    let myQuery = {email:userData.email}
+    
+    User.deleteOne(myQuery, function (err,obj){
+        if(err) throw err;
+        console.log('deleted')
+        res.status(200).json({status:"successful"});
+    })
+    
+})
 
   
 

@@ -16,25 +16,22 @@ currentPage = 1,
 
 
 
+const deleteAcc = document.querySelector('#deleteaccount');
 
-function displayBooks (books,wrapper,row,page){
 
-    wrapper.innerHTML = '';
-    page--;
-    let start = row * page;
-    let end = start + row;
-    let paginatedBooks = books.slice(start,end);
-
-    for(book of paginatedBooks){
-        wrapper.insertAdjacentElement('afterbegin', book);
-    }
-
-}
 
 
 let bookDel = document.querySelectorAll(".book__delete");
 
+let dashnavBtn = document.querySelector(".book__toggleBtn");
+
 document.addEventListener('DOMContentLoaded', function(){
+
+
+    dashnavBtn.addEventListener('click', e => {
+        let dashNav = document.querySelector(".dashnav")
+        dashNav.classList.add("mobilebtn");
+    })
 
     for(let del of bookDel ){
         del.addEventListener('click', e=>{
@@ -45,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
                 if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
                     window.location.replace("http://localhost:5505/dashboard/books") 
-                     
+
                 }
 
             }).catch(error=>{
@@ -54,12 +51,11 @@ document.addEventListener('DOMContentLoaded', function(){
         })
     }
         
-    
-    
+
     bookForm.addEventListener('submit', e=>{
 
         e.preventDefault();
- 
+
         
         let title = bookForm.title,
             author = bookForm.author,
@@ -73,6 +69,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
     prev.addEventListener('click', e=> {
         if(currentPage > 1){
+            prev.disabled = false;
             currentPage--;
             displayBooks (bookArray,bookwrapper,row,currentPage)
         }
@@ -88,10 +85,8 @@ document.addEventListener('DOMContentLoaded', function(){
 
     displayBooks (bookArray,bookwrapper,row,currentPage)
 
-
-    
-
 }); 
+
 
 
 // get images , ratings , title and author and review link
@@ -156,6 +151,7 @@ function getLinks(author,title){
     })
     .catch(error=>{
         console.log(error)
+        alert('Author not found');
     })
 
  }
@@ -167,13 +163,42 @@ function sendData(data){
             .then(res => {
 
                 if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
-                    window.location.replace("http://localhost:5505/dashboard/books")
+
+                    setTimeout(window.location.replace("http://localhost:5505/dashboard/books"),5000)
                 }
             }).catch(error=>{
                 console.log(error)
+
             })
 
 }
+
+
+
+function displayBooks (books,wrapper,row,page){
+
+    if(books.length >= 1){
+        wrapper.innerHTML = '';
+        page--;
+        let start = row * page;
+        let end = start + row;
+        let paginatedBooks = books.slice(start,end);
+
+        for(book of paginatedBooks){
+            wrapper.insertAdjacentElement('afterbegin', book);
+        }
+
+    }else{
+
+        let animcontainer = document.querySelector("#animcontainer");
+        animcontainer.classList.remove('book__nobooks');
+    }
+    
+
+}
+
+
+
 
 
 

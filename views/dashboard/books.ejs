@@ -1,32 +1,20 @@
 <main class="dashboard">
 
-    <div class="dashnav">
-
-        <div class="dashnav__wrapper">
-
-            <div class="dashnav__logocon">
-                <a class="dashnav__logo" href="/">BOOK-KEEPER™</a>
-             </div>
-             <div class="dashnav__menu">
-                <a class="dashnav__links" href="#"><i class="fas fa-shield-alt"></i> Book Vault</a>
-                <a class="dashnav__links"  href="#"><i class="far fa-user"></i> Account</a>
-                <a class="dashnav__links"  href="#"><i class="fas fa-sign-out-alt"></i> Log out</a>
-             </div>
-
-        </div>    
+    <%- include('./dashnav.ejs') %>
        
-    </div>
+   
 
     <div class="book">
 
         <div class="book__wrapper">
 
             <div class="book__content mb-5">
-                <div class="book__titlecon mb-2">
+                <div class="book__titlecon mb-2 d-flex align-items-center">
+                    <a class="book__toggleBtn" type="submit" href="#"><i class="fas fa-bars"></i></a>
                     <p class="book__title"><span>Add Books</span></p>
                 </div>
                    
-               <form  id="bookform" class="row book__form d-flex justify-content-center align-items-center">
+               <form  id="bookform" class="row book__form d-flex flex-md-row flex-column justify-content-center align-items-center">
 
                     <div class="book__input col me-4">
                         <label for="exampleInputEmail1" class="form-label visually-hidden">Email address</label>
@@ -64,14 +52,16 @@
                    
                 </div>
                 
-                <div id="bookwrapper" class="book__listwrapper d-flex flex-wrap align-items-center justify-content-between">
-                
+                <div id="bookwrapper" class="book__listwrapper d-flex flex-wrap  align-items-center justify-content-between">
+
+                    <div id="animcontainer" class='book__nobooks animate d-flex flex-column align-items-center justify-content-center'> 
+                         <img src="/assets/Bookkeeper/lovereading.svg" alt="no books">
+                         <p class="book__vault m-0">Book Vault is empty</p>
+                    </div>
                 
                     <%  if(typeof bookdata !== 'undefined'){
                         
                     for(let i = 0; i < bookdata.length; i++){%>
-
-
                     <!-- this is the wrapper  -->
               
                         <!-- cards  -->
@@ -104,8 +94,9 @@
                   
                      <%}
                    
-                     }%>
-                    
+                     }%>   
+                     
+                     
                 
                 </div>
             </div>    
@@ -114,10 +105,7 @@
 
  </main>
 
- <script>
-   
- </script>
-
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.1/gsap.min.js" integrity="sha512-cdV6j5t5o24hkSciVrb8Ki6FveC2SgwGfLE31+ZQRHAeSRxYhAQskLkq3dLm8ZcWe1N3vBOEYmmbhzf7NTtFFQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
  
 
 
