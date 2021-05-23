@@ -11460,9 +11460,9 @@ fieldset:disabled .btn {
 
 .dashnav {
   position: fixed;
+  width: 20%;
   top: 0;
   left: 0;
-  width: 20%;
   height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -11472,7 +11472,7 @@ fieldset:disabled .btn {
   background-color: #0B959E;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 767.98px) {
   .dashnav {
     position: absolute;
     width: 65%;
@@ -11591,6 +11591,7 @@ fieldset:disabled .btn {
 @media (max-width: 575.98px) {
   .book__input {
     margin-bottom: 1rem;
+    margin-right: 0 !important;
   }
 }
 
@@ -11598,6 +11599,13 @@ fieldset:disabled .btn {
   width: 100%;
   height: 2.8rem;
   border: 1px solid #0B959E;
+}
+
+@media (max-width: 575.98px) {
+  .book input {
+    height: 2.4rem !important;
+    font-size: .8rem !important;
+  }
 }
 
 .book__delete {
@@ -11632,6 +11640,13 @@ fieldset:disabled .btn {
   max-width: fit-content !important;
 }
 
+@media (max-width: 575.98px) {
+  .book__btnwrapper {
+    -ms-flex-item-align: start;
+        align-self: flex-start;
+  }
+}
+
 .book__bookitem {
   position: relative;
   width: 47%;
@@ -11657,6 +11672,14 @@ fieldset:disabled .btn {
   text-decoration: none;
 }
 
+@media (max-width: 575.98px) {
+  .book__bookitem {
+    max-height: 250px;
+    height: 250px;
+    width: 100%;
+  }
+}
+
 .book__text {
   font-size: .8rem;
   font-weight: 500;
@@ -11669,6 +11692,12 @@ fieldset:disabled .btn {
 .book__cta {
   color: #0B959E;
   font-size: 1rem;
+}
+
+@media (max-width: 575.98px) {
+  .book__cta {
+    font-size: .7rem;
+  }
 }
 
 .book__cta:hover {
@@ -11739,6 +11768,15 @@ fieldset:disabled .btn {
   height: 1.6rem !important;
 }
 
+@media (max-width: 575.98px) {
+  .book__profileinput {
+    width: 60% !important;
+  }
+  .book__profileinput input {
+    font-size: 1rem !important;
+  }
+}
+
 .book__updatebtn {
   border: none;
   background: #0B959E;
@@ -11771,9 +11809,26 @@ fieldset:disabled .btn {
 }
 
 .book__toggleBtn {
+  display: none;
   font-size: 2rem;
   margin-right: 3rem;
   color: #0B959E;
+}
+
+@media (max-width: 575.98px) {
+  .book__toggleBtn {
+    display: block;
+  }
+}
+
+.book__formwrapper {
+  width: 50%;
+}
+
+@media (max-width: 575.98px) {
+  .book__formwrapper {
+    width: 100%;
+  }
 }
 
 a {

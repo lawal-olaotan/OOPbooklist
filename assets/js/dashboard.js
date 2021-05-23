@@ -9,8 +9,18 @@ const bookItems = document.querySelectorAll(".book__bookitem"),
         bookwrapper = document.querySelector("#bookwrapper");
 
 
-let row = 4,
-currentPage = 1,
+const mobileQuery = window.matchMedia("(max-width:425px)");
+
+
+let row;
+
+if(mobileQuery.matches){
+    row = 2;
+}else{
+    row = 4;
+}
+
+let currentPage = 1,
  bookArray = Array.from(bookItems),
  pagecount = Math.ceil(bookArray.length/row);
 
@@ -28,10 +38,23 @@ let dashnavBtn = document.querySelector(".book__toggleBtn");
 document.addEventListener('DOMContentLoaded', function(){
 
 
-    dashnavBtn.addEventListener('click', e => {
-        let dashNav = document.querySelector(".dashnav")
-        dashNav.classList.add("mobilebtn");
-    })
+        
+
+
+        window.addEventListener('click', e => {
+            let dashnav = document.querySelector('.dashnav');
+
+            if(dashnavBtn.contains(e.target)){
+                dashnav.classList.add('mobilebtn')
+                
+            }else if(dashnav.contains(e.target)){
+                dashnav.classList.add('mobilebtn');
+            }else{
+                dashnav.classList.remove('mobilebtn');
+            }
+           
+        })
+
 
     for(let del of bookDel ){
         del.addEventListener('click', e=>{
@@ -82,6 +105,8 @@ document.addEventListener('DOMContentLoaded', function(){
             displayBooks (bookArray,bookwrapper,row,currentPage)
         }
    })
+
+
 
     displayBooks (bookArray,bookwrapper,row,currentPage)
 
