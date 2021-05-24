@@ -11459,8 +11459,6 @@ fieldset:disabled .btn {
 }
 
 .dashnav {
-  position: fixed;
-  width: 20%;
   top: 0;
   left: 0;
   height: 100vh;
@@ -11472,7 +11470,7 @@ fieldset:disabled .btn {
   background-color: #0B959E;
 }
 
-@media (max-width: 767.98px) {
+@media (max-width: 575.98px) {
   .dashnav {
     position: absolute;
     width: 65%;
@@ -11482,6 +11480,31 @@ fieldset:disabled .btn {
     -moz-transform: translate(-100%);
     -ms-transform: translate(-100%);
     -o-transform: translate(-100%);
+  }
+}
+
+@media (min-width: 768px) {
+  .dashnav {
+    position: absolute;
+    width: 30%;
+    z-index: 2;
+    transform: translate(-100%);
+    -webkit-transform: translate(-100%);
+    -moz-transform: translate(-100%);
+    -ms-transform: translate(-100%);
+    -o-transform: translate(-100%);
+  }
+}
+
+@media (min-width: 992px) {
+  .dashnav {
+    width: 20%;
+    position: fixed;
+    transform: translate(0%);
+    -webkit-transform: translate(0%);
+    -moz-transform: translate(0%);
+    -ms-transform: translate(0%);
+    -o-transform: translate(0%);
   }
 }
 
@@ -11541,7 +11564,6 @@ fieldset:disabled .btn {
 .book {
   width: 80%;
   padding: 2rem 0;
-  margin-left: 20rem;
 }
 
 @media (max-width: 575.98px) {
@@ -11552,13 +11574,49 @@ fieldset:disabled .btn {
   }
 }
 
-.book__wrapper {
-  width: 85%;
+@media (min-width: 768px) {
+  .book {
+    margin-left: 0rem;
+    padding: 2rem 1rem;
+    width: 95%;
+  }
+}
+
+@media (min-width: 992px) {
+  .book {
+    margin-left: 14rem;
+    width: 100%;
+  }
+}
+
+@media (min-width: 1400px) {
+  .book {
+    width: 75%;
+    margin-left: 20rem;
+  }
 }
 
 @media (max-width: 575.98px) {
   .book__wrapper {
     width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .book__wrapper {
+    width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .book__wrapper {
+    width: 95%;
+  }
+}
+
+@media (min-width: 1200px) {
+  .book__wrapper {
+    width: 85%;
   }
 }
 
@@ -11574,11 +11632,23 @@ fieldset:disabled .btn {
   }
 }
 
+@media (min-width: 768px) {
+  .book__title {
+    margin: 0 !important;
+  }
+}
+
 .book__acctitle {
   margin-bottom: 2rem;
 }
 
 @media (max-width: 575.98px) {
+  .book__acctitle {
+    margin: 0 !important;
+  }
+}
+
+@media (min-width: 768px) {
   .book__acctitle {
     margin: 0 !important;
   }
@@ -11649,9 +11719,6 @@ fieldset:disabled .btn {
 
 .book__bookitem {
   position: relative;
-  width: 47%;
-  max-height: 200px;
-  height: 200px;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
@@ -11677,6 +11744,30 @@ fieldset:disabled .btn {
     max-height: 250px;
     height: 250px;
     width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .book__bookitem {
+    max-height: 225px;
+    height: 225px;
+    width: 48%;
+  }
+}
+
+@media (min-width: 992px) {
+  .book__bookitem {
+    width: 47%;
+    max-height: 225px;
+    height: 225px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .book__bookitem {
+    width: 47%;
+    max-height: 200px;
+    height: 200px;
   }
 }
 
@@ -11809,7 +11900,6 @@ fieldset:disabled .btn {
 }
 
 .book__toggleBtn {
-  display: none;
   font-size: 2rem;
   margin-right: 3rem;
   color: #0B959E;
@@ -11821,6 +11911,18 @@ fieldset:disabled .btn {
   }
 }
 
+@media (min-width: 768px) {
+  .book__toggleBtn {
+    display: block;
+  }
+}
+
+@media (min-width: 992px) {
+  .book__toggleBtn {
+    display: none;
+  }
+}
+
 .book__formwrapper {
   width: 50%;
 }
@@ -11828,6 +11930,18 @@ fieldset:disabled .btn {
 @media (max-width: 575.98px) {
   .book__formwrapper {
     width: 100%;
+  }
+}
+
+@media (min-width: 576px) {
+  .book__formwrapper {
+    width: 80%;
+  }
+}
+
+@media (min-width: 992px) {
+  .book__titlecon {
+    margin-bottom: .5rem !important;
   }
 }
 
