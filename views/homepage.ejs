@@ -65,6 +65,24 @@
        
    </section>
 
+
+   <div class="position-fixed top-0 end-0 p-3" style="z-index: 5">
+        <div id="BookToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <strong class="me-auto">Book-Keeper™</strong>
+                <small class="confirmation">Suceess</small>
+                
+            </div>
+            <div class="toast-body">
+                <p class="toast-message">New Book Added to your book-keeper™</p>
+                    <div class="mt-2 pt-2 border-top">
+                        <a href="/users/login" type="button" class="btn primary btn-sm me-3">View Books</a>
+                        <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="toast" aria-label="Close">Close</button>
+                  </div>
+            </div>
+        </div>
+  </div>
+
 </main>
 <%- include('./partials/footer.ejs') %>
 

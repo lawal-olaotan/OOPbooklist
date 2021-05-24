@@ -53,7 +53,7 @@ body{
     box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
     position:sticky !important;
     top: 0;
-    z-index: 1000;
+    z-index:4;
     transition: 0.2s ease-in-out;
     -webkit-transition: 0.2s ease-in-out;
     -moz-transition: 0.2s ease-in-out;
@@ -470,4 +470,13 @@ body{
 
   .flickity-slider{
       display: flex;
+  }
+
+  .primary{
+      background-color: #0B959E;
+      color: #FFF;
+
+      &:hover{
+          color: #FFF;
+      }
   }

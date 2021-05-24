@@ -9,7 +9,7 @@ const {ensureAuthenicated} = require ("../config/auth");
 // homePage rendered 
 router.get("/",(req,res) => {
 
-    const elements = [...initialElements,"../assets/lib/flickity/flickity.css","../assets/lib/flickity/flickity.pkgd.min.js","../assets/js/main.js"];
+    const elements = [...initialElements,"../assets/lib/flickity/flickity.css","../assets/lib/flickity/flickity.pkgd.min.js","../assets/js/main.js",];
 
     const meta = funs.meta({
         description: "",

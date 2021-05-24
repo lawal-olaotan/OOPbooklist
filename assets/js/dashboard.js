@@ -1,7 +1,6 @@
 
 const bookForm = document.querySelector('#bookform');
-let bookData,buylink,reviewlink;
-
+let bookData = {},buylink,reviewlink;
 
 const bookItems = document.querySelectorAll(".book__bookitem"),
         prev = document.querySelector("#prev"),
@@ -169,20 +168,21 @@ function getLinks(author,title){
              }
 
              bookData.descrip =  descripArry[0]
-
         }
-
         sendData(bookData);
+      
     })
     .catch(error=>{
         console.log(error)
         alert('Author not found');
     })
 
- }
+}
+
 
 
 function sendData(data){
+
 
     axios.post('/dashboard/mybooks',data)
             .then(res => {

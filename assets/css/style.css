@@ -11495,7 +11495,7 @@ body {
   position: -webkit-sticky !important;
   position: sticky !important;
   top: 0;
-  z-index: 1000;
+  z-index: 4;
   transition: 0.2s ease-in-out;
   -webkit-transition: 0.2s ease-in-out;
   -moz-transition: 0.2s ease-in-out;
@@ -11955,5 +11955,14 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.primary {
+  background-color: #0B959E;
+  color: #FFF;
+}
+
+.primary:hover {
+  color: #FFF;
 }
 /*# sourceMappingURL=style.css.map */

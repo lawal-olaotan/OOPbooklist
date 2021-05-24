@@ -17,10 +17,14 @@ const {ensureAuthenicated} = require ("../config/auth");
 
 router.post("/mybooks", (req, res)=> {
 
+
+    
         const book = new Book(req.body);
         book.user = req.user._id;
+        if(!book.user){
+            res.json({status:"nouser"});
+        }else{
         book.save();
-    
         User.findById({_id: book.user})
        .then( user => {
         user.books.push(book);
@@ -28,6 +32,8 @@ router.post("/mybooks", (req, res)=> {
         res.status(200).json({status:"successful"});
 
        }).catch(err => console.error(err));
+        }
+        
 
 })
 
@@ -134,11 +140,6 @@ router.post('/updateName', (req,res) => {
         res.redirect('/dashboard/account');
     }
 
-
-
-   
-  
-    
    
 })
 
@@ -167,11 +168,7 @@ router.post('/updateEmail', (req,res) => {
         req.flash('error_msg', 'Values are same')
         res.redirect('/dashboard/account');
     }
-
-   
   
-    
-   
 })
 
 router.post('/delUser', (req,res)=> {

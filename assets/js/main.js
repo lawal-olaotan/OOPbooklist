@@ -1,12 +1,23 @@
 
 
 
+
+
 const nextBtn = document.querySelector('#nextbtn'),
  mobileView = window.matchMedia("(max-width:450px)"),
  reviewcarol = document.querySelector('#review-carousel'),
  carol = document.querySelector('.main-carousel');
 
  let flicky,homefun;
+
+let bsBook; 
+
+let bookToast = document.querySelector("#BookToast"),
+options = {autohide : true,
+            delay: 5000,}
+
+
+
 
 
 
@@ -36,7 +47,7 @@ class Homepagefuncs{
                                     <div  class="card-img-top position-relative">
                                             <img id="${data.book_details[0].author}" src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/387928/book%20placeholder.png" class="card-pic img-thumbnail p-0 border-0"  alt="card image">
                                             <div class="placeholder d-flex justify-content-center align-items-center w-100 h-100">
-                                                <a class="btn bok-btn btn-sm"id="homeadd" href="/dashboard">Add to Books</a>
+                                                <a onclick="putBook(event)" data-descrip="${data.book_details[0].description}" data-title="${data.book_details[0].title}" data-author ="${data.book_details[0].author}" class="btn bok-btn btn-sm">Add to Books</a>
                                             </div>
                                     </div>
                                     <div class="card-body">
@@ -55,21 +66,20 @@ class Homepagefuncs{
         axios.get('https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=yHo5Zw1Leq9PI2WacGtwhmmRNWaUdWEM')
         .then(data =>{ 
     
-    
             let bookdata = data.data.results;
             data = bookdata.slice(0,5).reverse();
            if(data.length){
                carol.classList.add('is-draggable');
     
-           
-    
+        
                data.map(label => {
     
                 carol.insertAdjacentHTML("afterbegin",cardTemp(label));
-                let bookrank = label.rank
                 let authorkey = label.book_details[0].author;
                 let titleKey = label.book_details[0].title;
-                getKeys(bookrank,authorkey,titleKey); 
+                let descripKey = label.book_details[0].description;
+
+                getKeys(authorkey,titleKey); 
     
                })
     
@@ -79,20 +89,27 @@ class Homepagefuncs{
     
             
     
-             function getKeys(rank,author,title){
+             function getKeys(author,title){
     
                 axios.get('https://www.googleapis.com/books/v1/volumes?q='+ title + "+inauthor:"+author+"&key="+"AIzaSyC1fXjcENg0nomgwn8cDCYxaTBCS2dUSlk")
                 .then(data => {
-                    let picdata = data.data.items[0].volumeInfo.imageLinks.thumbnail;
+                    let picdata = data.data.items[0].volumeInfo.imageLinks.thumbnail,
+                     rating = data.data.items[0].volumeInfo.averageRating,
+                     link = data.data.items[0].volumeInfo.canonicalVolumeLink;
                         picdata = picdata.replace(/^http:\/\//i, 'https://');
+
                         let coverimgs= document.querySelectorAll('.card-pic');
+
                         let coverimg;
+
                         for(coverimg of coverimgs){
                             if(author === coverimg.id){
                                 coverimg.setAttribute("src",picdata);
+                                coverimg.setArribute("data-link", link)
+                                coverimg.setAttribute("data-rating", rating)
                             }
                         }
-    
+                        
                 })
                 .catch(error=>{
                     console.log(error)
@@ -205,18 +222,19 @@ class Homepagefuncs{
     
     }
 
+    
+
 }
 
-//getting keys for Bestselling Apis 
-// const NY = config.NYT_KEY;
 
-// new bootstrap.scrollSpy(document.body, {
-//     target:'#secnavbar',
-// })
 
 document.addEventListener('DOMContentLoaded', function(){
 
+    ToastEle = new bootstrap.Toast(bookToast,options)
+
+
     const homeFuncs = new Homepagefuncs(); 
+    
     // navbar scroll effect
     window.addEventListener('scroll',e=>{
         const navbar = document.querySelector('#secnavbar');
@@ -252,3 +270,55 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
  
+function putBook(event){
+
+    let tarEle = event.target,
+    title = tarEle.getAttribute('data-title'),
+    author = tarEle.getAttribute('data-author'),
+    description = tarEle.getAttribute("data-descrip");
+
+    let picParent = tarEle.parentElement.parentElement;
+    pic = picParent.querySelector(".card-pic").getAttribute('src'),
+    review = picParent.querySelector(".card-pic").getAttribute('data-link'),
+    rating = picParent.querySelector(".card-pic").getAttribute('data-rating');
+    let bsBook = {};
+
+     bsBook.title = title
+     bsBook.author = author
+     bsBook.recom = 'NewYork Times',
+     bsBook.descrip = description,
+     bsBook.images = pic,
+     bsBook.review = review,
+     bsBook.rating = rating,
+
+    console.log(bsBook);
+   
+    axios.post('/dashboard/mybooks',bsBook)
+    .then(res => {
+
+        if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
+            toastStat("View Books",'New Book Added to your book-keeper™','success')
+            ToastEle.show();
+        }
+
+    }).catch(error=>{
+        console.log(error)
+        toastStat("Login",'Kindly Login to add books','failed')
+        ToastEle.show();
+    })
+
+}
+
+
+function toastStat(btnText,toastmes,status){
+
+    toastBtn = document.querySelector(".primary"),
+    toastText = document.querySelector(".toast-message");
+    confirmation = document.querySelector(".confirmation");
+
+    toastBtn.textContent = btnText
+    toastText.textContent = toastmes;
+    confirmation.textContent = status
+       
+   
+}
