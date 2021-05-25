@@ -3,13 +3,25 @@
 const topnav = document.querySelector("#topnav"),
  listWrapper = document.querySelector("#listwrapper");
 
+ function loadFile(url){
+    let script = document.createElement("script");
+    script.src = url
+    document.head.appendChild(script);
 
+};
+
+let bookToast = document.querySelector(".toast"),
+options = {autohide : true,
+            delay: 5000,}
 
 
 
 document.addEventListener('DOMContentLoaded', function(){
 
+    loadFile('/assets/js/senddata.js');
+    
     loadlist()
+    ToastEle = new bootstrap.Toast(bookToast,options)
 
 })
 
@@ -30,13 +42,13 @@ function loadlist(){
                         </div>
 
                         <div class="bestlist__content">
-                            <p class="bestlist__title mb-1">Book Title: ${data.book_details[0].title}</p>
-                            <p class="bestlist__authorfw-normal mb-1">Author : ${data.book_details[0].author}</p>
+                            <p class="bestlist__title mb-1">Book Title: <span class="booktitle">${data.book_details[0].title}</span></p>
+                            <p class="bestlist__authorfw-normal mb-1">Author : <span class="bookauthor">${data.book_details[0].author}</span> </p>
                             <p class="bestlist__descript fw-light mb-1">${data.book_details[0].description}</p>
                         </div>
 
                         <div class="bestlist__actions d-flex align-items-center justify-content-center flex-column">
-                            <a class="bestlist__btn btn mb-3" href="/dashboard"> Add to Book</a>
+                            <a onclick ="listBook(event)" class="bestlist__btn btn mb-3"> Add to Book</a>
                         </div>
 
                     </div>
@@ -55,7 +67,6 @@ function loadlist(){
                data.map(label => {
     
                 listWrapper.insertAdjacentHTML("afterbegin",listTemp (label));
-                let bookrank = label.rank
                 let authorkey = label.book_details[0].author;
                 let titleKey = label.book_details[0].title;
 
@@ -70,6 +81,8 @@ function loadlist(){
                 axios.get('https://www.googleapis.com/books/v1/volumes?q='+ title + "+inauthor:"+author+"&key="+"AIzaSyC1fXjcENg0nomgwn8cDCYxaTBCS2dUSlk")
                 .then(data => {
                     let picdata = data.data.items[0].volumeInfo.imageLinks.thumbnail;
+                    let rating = data.data.items[0].volumeInfo.averageRating;
+                    let link = data.data.items[0].volumeInfo.canonicalVolumeLink;
                         picdata = picdata.replace(/^http:\/\//i, 'https://');
                         let bookCovers= document.querySelectorAll('.bestlist__img'),
                          coverimg;
@@ -77,6 +90,8 @@ function loadlist(){
                         for(coverimg of bookCovers){
                             if(author === coverimg.id){
                                 coverimg.setAttribute("src",picdata);
+                                coverimg.setAttribute("data-rating",rating);
+                                coverimg.setAttribute("data-link",link);
                             }
                         }
     
@@ -97,3 +112,28 @@ function loadlist(){
 }
 
 
+function listBook(event){
+
+// variables for list book function 
+  let tagEle = event.target.parentElement,
+  prev = tagEle.previousElementSibling,
+  imgContainer = tagEle.previousElementSibling.previousElementSibling.firstElementChild,
+
+
+//  data titles 
+  title,author,descrip,images,rating,review,
+
+  bsData = {title: getValue(prev,".booktitle",title),author: getValue(prev,".bookauthor",author),descrip:getValue(prev,".bestlist__descript",descrip),recom:"NewYork Times",images:getAtt(imgContainer,"src",images),rating:getAtt(imgContainer,"data-rating",rating),review:getAtt(imgContainer,"data-link",review)}
+
+  postData(bsData)
+}
+
+function getValue(parentEle,eleSelect,eleVar){
+     eleVar = parentEle.querySelector(eleSelect).textContent
+    return eleVar;
+}
+
+function getAtt(parentEle,targArt,ele){
+    ele = parentEle.getAttribute(targArt)
+    return ele;
+}

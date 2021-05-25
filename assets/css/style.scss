@@ -203,13 +203,19 @@ body{
 
     @include media-breakpoint-down(sm){
         width: 84% !important;
-        max-height: 324px;
+        max-height: 324px !important;
+        height: 324px !important;
     }
     @include media-breakpoint-up(md){
         width: 40% !important;
+        max-height: 324px;
+        height: 324px;
+        
     }
     @include media-breakpoint-up(lg){
         width: 23% !important;
+        height: 330px !important;
+        max-height: 330px !important;
     }
    
 
@@ -282,7 +288,7 @@ body{
 }
 
 .btnposition{
-    top: 9pc;
+        top: 0pc;
 }
 
 .carousel-cell{

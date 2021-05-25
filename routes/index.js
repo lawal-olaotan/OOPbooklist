@@ -9,7 +9,7 @@ const {ensureAuthenicated} = require ("../config/auth");
 // homePage rendered 
 router.get("/",(req,res) => {
 
-    const elements = [...initialElements,"../assets/lib/flickity/flickity.css","../assets/lib/flickity/flickity.pkgd.min.js","../assets/js/main.js",];
+    const elements = [...initialElements,"../assets/js/sendata.js","../assets/lib/flickity/flickity.css","../assets/lib/flickity/flickity.pkgd.min.js","../assets/js/main.js",];
 
     const meta = funs.meta({
         description: "",
@@ -29,7 +29,7 @@ router.get("/",(req,res) => {
 // best sellers page 
 router.get("/bestsellers",(req,res) => {
 
-    const elements = [...initialElements,"../assets/js/list.js","../assets/css/list.min.css",];
+    const elements = [...initialElements,"../assets/js/sendata.js","../assets/js/list.js","../assets/css/list.min.css",];
 
     const meta = funs.meta({
         description: "",

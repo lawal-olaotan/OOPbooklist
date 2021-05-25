@@ -11628,4 +11628,13 @@ fieldset:disabled .btn {
 .bestlist__btn:hover {
   color: #fff !important;
 }
+
+.primary {
+  background-color: #0B959E;
+  color: #fff;
+}
+
+.primary:hover {
+  color: #fff;
+}
 /*# sourceMappingURL=list.css.map */

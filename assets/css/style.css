@@ -11667,19 +11667,24 @@ body {
 @media (max-width: 575.98px) {
   .bookbody {
     width: 84% !important;
-    max-height: 324px;
+    max-height: 324px !important;
+    height: 324px !important;
   }
 }
 
 @media (min-width: 768px) {
   .bookbody {
     width: 40% !important;
+    max-height: 324px;
+    height: 324px;
   }
 }
 
 @media (min-width: 992px) {
   .bookbody {
     width: 23% !important;
+    height: 330px !important;
+    max-height: 330px !important;
   }
 }
 
@@ -11747,7 +11752,7 @@ body {
 }
 
 .btnposition {
-  top: 9pc;
+  top: 0pc;
 }
 
 .carousel-cell {

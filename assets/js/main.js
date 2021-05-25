@@ -12,9 +12,10 @@ const nextBtn = document.querySelector('#nextbtn'),
 
 let bsBook; 
 
-let bookToast = document.querySelector("#BookToast"),
-options = {autohide : true,
-            delay: 5000,}
+let bookToast = document.querySelector(".toast"),
+ options = {autohide : true,
+             delay: 5000,}
+
 
 
 
@@ -105,8 +106,8 @@ class Homepagefuncs{
                         for(coverimg of coverimgs){
                             if(author === coverimg.id){
                                 coverimg.setAttribute("src",picdata);
-                                coverimg.setArribute("data-link", link)
-                                coverimg.setAttribute("data-rating", rating)
+                                coverimg.setAttribute("data-link",link)
+                                coverimg.setAttribute("data-rating",rating)
                             }
                         }
                         
@@ -227,8 +228,17 @@ class Homepagefuncs{
 }
 
 
+function loadFile(url){
+    let script = document.createElement("script");
+    script.src = url
+    document.head.appendChild(script);
+
+}; 
+
 
 document.addEventListener('DOMContentLoaded', function(){
+
+    loadFile('/assets/js/senddata.js');
 
     ToastEle = new bootstrap.Toast(bookToast,options)
 
@@ -272,53 +282,24 @@ document.addEventListener('DOMContentLoaded', function(){
  
 function putBook(event){
 
-    let tarEle = event.target,
+    let tarEle = event.target;
     title = tarEle.getAttribute('data-title'),
     author = tarEle.getAttribute('data-author'),
     description = tarEle.getAttribute("data-descrip");
 
-    let picParent = tarEle.parentElement.parentElement;
-    pic = picParent.querySelector(".card-pic").getAttribute('src'),
-    review = picParent.querySelector(".card-pic").getAttribute('data-link'),
-    rating = picParent.querySelector(".card-pic").getAttribute('data-rating');
-    let bsBook = {};
+    let picParent = tarEle.parentElement.parentElement,
+     eleTemp = picParent.querySelector(".card-pic"),
+        pic = eleTemp.getAttribute('src'),
+     rating = eleTemp.getAttribute('data-rating'),
+     review = eleTemp.getAttribute("data-link");
 
-     bsBook.title = title
-     bsBook.author = author
-     bsBook.recom = 'NewYork Times',
-     bsBook.descrip = description,
-     bsBook.images = pic,
-     bsBook.review = review,
-     bsBook.rating = rating,
+    let bsBook = {title:title, author:author,descrip:description,images:pic,review:review,rating:rating,recom:'NewYork Time'}
 
-    console.log(bsBook);
-   
-    axios.post('/dashboard/mybooks',bsBook)
-    .then(res => {
-
-        if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
-            toastStat("View Books",'New Book Added to your book-keeper™','success')
-            ToastEle.show();
-        }
-
-    }).catch(error=>{
-        console.log(error)
-        toastStat("Login",'Kindly Login to add books','failed')
-        ToastEle.show();
-    })
+    postData(bsBook);
 
 }
 
 
-function toastStat(btnText,toastmes,status){
 
-    toastBtn = document.querySelector(".primary"),
-    toastText = document.querySelector(".toast-message");
-    confirmation = document.querySelector(".confirmation");
 
-    toastBtn.textContent = btnText
-    toastText.textContent = toastmes;
-    confirmation.textContent = status
-       
-   
-}
+
