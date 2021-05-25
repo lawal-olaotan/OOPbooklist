@@ -97,8 +97,8 @@ const express = require ("express"),
     // handles user login routes with serverside rendering for security purpose
     router.post("/login",(req,res,next) => {
         passport.authenticate ('local', {
-            successRedirect:'/dashboard/books',
-            failureRedirect:'/users/login',
+            successRedirect:'https://bk-keeper.herokuapp.com/dashboard/books',
+            failureRedirect:'https://bk-keeper.herokuapp.com/users/login',
             failureFlash:true,
         })(req,res,next)
     })
