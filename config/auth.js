@@ -5,14 +5,14 @@ module.exports = {
             return next();
         }
         req.flash('error_msg','please login to add books');
-        res.redirect('/users/login');
+        res.redirect('https://bk-keeper.herokuapp.com/users/login');
     },
 
     forwardAuthenticated: function(req, res, next) {
       if (!req.isAuthenticated()) {
         return next();
       }
-      res.redirect('/dashboard/books');      
+      res.redirect('https://bk-keeper.herokuapp.com/dashboard/books');      
     }
 
 }
