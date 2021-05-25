@@ -11561,11 +11561,6 @@ fieldset:disabled .btn {
   -o-transform: translateX(0%);
 }
 
-.book {
-  width: 80%;
-  padding: 2rem 0;
-}
-
 @media (max-width: 575.98px) {
   .book {
     margin-left: 0rem;
@@ -11589,10 +11584,17 @@ fieldset:disabled .btn {
   }
 }
 
+@media (min-width: 1200px) {
+  .book {
+    width: 80%;
+    margin-left: 20rem;
+  }
+}
+
 @media (min-width: 1400px) {
   .book {
     width: 75%;
-    margin-left: 20rem;
+    margin-left: 25rem;
   }
 }
 
@@ -11782,7 +11784,7 @@ fieldset:disabled .btn {
 
 .book__cta {
   color: #0B959E;
-  font-size: 1rem;
+  font-size: .8rem;
 }
 
 @media (max-width: 575.98px) {
@@ -11833,9 +11835,27 @@ fieldset:disabled .btn {
   margin: 0 auto;
 }
 
+@media (max-width: 575.98px) {
+  .book #animcontainer {
+    width: 100%;
+  }
+}
+
 .book #animcontainer img {
   width: 75%;
   height: 80%;
+}
+
+@media (max-width: 575.98px) {
+  .book #animcontainer img {
+    width: 100%;
+  }
+}
+
+@media (min-width: 768px) {
+  .book #animcontainer img {
+    width: 100%;
+  }
 }
 
 .book__vault {
@@ -11844,6 +11864,12 @@ fieldset:disabled .btn {
   color: #0B959E;
   position: absolute;
   bottom: 1.4pc;
+}
+
+@media (max-width: 575.98px) {
+  .book__vault {
+    bottom: 0.06pc;
+  }
 }
 
 .book__profiletitle {

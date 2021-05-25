@@ -37,9 +37,6 @@ let dashnavBtn = document.querySelector(".book__toggleBtn");
 document.addEventListener('DOMContentLoaded', function(){
 
 
-        
-
-
         window.addEventListener('click', e => {
             let dashnav = document.querySelector('.dashnav');
 
@@ -159,15 +156,19 @@ function getLinks(author,title){
              let descrip = volLink.description;
              let discripArry;
             
-             if(descrip !== undefined){
-                 descripArry = descrip.split(/[•./]/);
-             }else{
-                 descrip = volLink2.description;
-                  descripArry = descrip.split(/[•.]/);
+            // //  working version 
+            //  if(descrip !== undefined){
+            //      descripArry = descrip.split(/[•./;]/);
+            //  }else{
+            //      descrip = volLink2.description;
+            //       descripArry = descrip.split(/[•./;]/);
                  
-             }
+            //  }
 
-             bookData.descrip =  descripArry[0]
+            //  bookData.descrip =  descripArry[0]
+
+            descrip = descrip.substring(0,Math.min(descrip.length,150));
+            bookData.descrip = descrip;
         }
         sendData(bookData);
       
