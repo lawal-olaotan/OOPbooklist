@@ -154,7 +154,6 @@ function getLinks(author,title){
              }
 
              let descrip = volLink.description;
-             let discripArry;
             
             // //  working version 
             //  if(descrip !== undefined){
