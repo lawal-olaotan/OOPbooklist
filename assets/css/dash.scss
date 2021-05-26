@@ -418,6 +418,8 @@
         font-size: 2rem;
         margin-right: 3rem;
         color: #0B959E;
+        background-color: transparent;
+        box-shadow: none;
 
         @include media-breakpoint-down(sm){
           display: block;
