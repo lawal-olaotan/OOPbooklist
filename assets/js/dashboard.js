@@ -1,4 +1,7 @@
 
+let googleBookKey = config.GOOGLE_KEY; 
+
+
 const bookForm = document.querySelector('#bookform');
 let bookData = {},buylink,reviewlink;
 
@@ -104,8 +107,6 @@ document.addEventListener('DOMContentLoaded', function(){
         }
    })
 
-
-
     displayBooks (bookArray,bookwrapper,row,currentPage)
 
 }); 
@@ -116,7 +117,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 function getLinks(author,title){
     
-    axios.get('https://www.googleapis.com/books/v1/volumes?q='+ title + "+inauthor:"+author+"&key="+"AIzaSyC1fXjcENg0nomgwn8cDCYxaTBCS2dUSlk")
+    axios.get('https://www.googleapis.com/books/v1/volumes?q='+ title +'+inauthor:'+author+'&key='+googleBookKey)
     .then(data => {
 
         if(data){

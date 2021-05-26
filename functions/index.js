@@ -28,7 +28,7 @@ exports.renderImplimental = (params, no_join) => {
 
 }
 
-exports.initialElements = ["assets/css/style.min.css","//cdn.jsdelivr.net/npm/axios/dist/axios.min.js","https://use.fontawesome.com/releases/v5.15.3/css/all.css", "//fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap","//cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js","https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js","//cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css","//cdn.jsdelivr.net/npm/toastify-js"
+exports.initialElements = ["assets/css/style.min.css","assets/js/config.js","//cdn.jsdelivr.net/npm/axios/dist/axios.min.js","https://use.fontawesome.com/releases/v5.15.3/css/all.css", "//fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap","//cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js","https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js","//cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css","//cdn.jsdelivr.net/npm/toastify-js"
 ];
 
 exports.meta = (data, req) => {
@@ -311,7 +311,7 @@ exports.conn = function(cb) {
     connection.on('end', err => {
         if (err.code === "ECONNREFUSED") {
             console.log(err.message)
-            console.error(require('../config').DBERROR)
+            console.error(require('../assets/js/config').DBERROR)
             if (typeof cb === "function") {
                 cb()
             }
@@ -345,7 +345,7 @@ exports.con = function(db, cb) {
     connection.on('end', err => {
         if (err.code === "ECONNREFUSED") {
             console.log(err.message)
-            console.error(require('../config').DBERROR)
+            console.error(require('../assets/js/config').DBERROR)
             if (typeof cb === "function") {
                 cb()
             }

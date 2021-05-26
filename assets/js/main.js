@@ -1,6 +1,6 @@
 
-
-
+let Nykey = config.NYT_KEY;
+let googleBookKey = config.GOOGLE_KEY; 
 
 
 const nextBtn = document.querySelector('#nextbtn'),
@@ -64,7 +64,7 @@ class Homepagefuncs{
     
     
     
-        axios.get('https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key=yHo5Zw1Leq9PI2WacGtwhmmRNWaUdWEM')
+        axios.get('https://api.nytimes.com/svc/books/v3/lists.json?list-name=hardcover-fiction&api-key='+ Nykey)
         .then(data =>{ 
     
             let bookdata = data.data.results;
@@ -92,7 +92,7 @@ class Homepagefuncs{
     
              function getKeys(author,title){
     
-                axios.get('https://www.googleapis.com/books/v1/volumes?q='+ title + "+inauthor:"+author+"&key="+"AIzaSyC1fXjcENg0nomgwn8cDCYxaTBCS2dUSlk")
+                axios.get('https://www.googleapis.com/books/v1/volumes?q='+ title + "+inauthor:"+author+"&key="+googleBookKey)
                 .then(data => {
                     let picdata = data.data.items[0].volumeInfo.imageLinks.thumbnail,
                      rating = data.data.items[0].volumeInfo.averageRating,
