@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', function(){
             .then(res => {
 
                 if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
-                    window.location.replace("http://localhost:5505/dashboard/books") 
+                    window.location.replace("/dashboard/books") 
 
                 }
 
@@ -189,7 +189,7 @@ function sendData(data){
 
                 if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
 
-                    setTimeout(window.location.replace("http://localhost:5505/dashboard/books"),5000)
+                    setTimeout(window.location.replace("/dashboard/books"),5000)
                 }
             }).catch(error=>{
                 console.log(error)
