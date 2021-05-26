@@ -267,6 +267,24 @@ body{
 }
 
 .bookcard{
+
+   @include media-breakpoint-down(sm){
+
+        .placeholder{
+            opacity: 1;
+            background-color: #0b949e77;
+
+            a{
+                padding: .65rem 1rem;
+                background: #fff;
+                color: #0B959E;
+            }
+        }
+        // .card-pic{
+        //     opacity: 0.5;
+        // }
+
+    }
     
     &:hover{
       .card-pic{
@@ -487,3 +505,4 @@ body{
           color: #FFF;
       }
   }
+

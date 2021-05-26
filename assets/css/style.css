@@ -11735,6 +11735,18 @@ body {
           transform: translate(-50%, -50%);
 }
 
+@media (max-width: 575.98px) {
+  .bookcard .placeholder {
+    opacity: 1;
+    background-color: #0b949e77;
+  }
+  .bookcard .placeholder a {
+    padding: .65rem 1rem;
+    background: #fff;
+    color: #0B959E;
+  }
+}
+
 .bookcard:hover .card-pic {
   opacity: 0.3;
 }
