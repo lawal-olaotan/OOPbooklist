@@ -415,7 +415,11 @@
     }
 
     &__toggleBtn{
-       
+        
+        .fas{
+            border: none;
+            background-color: transparent !important;
+        }
 
         @include media-breakpoint-down(sm){
           display: block;

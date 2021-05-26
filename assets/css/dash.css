@@ -11925,6 +11925,11 @@ fieldset:disabled .btn {
   color: #FFF;
 }
 
+.book__toggleBtn .fas {
+  border: none;
+  background-color: transparent !important;
+}
+
 @media (max-width: 575.98px) {
   .book__toggleBtn {
     display: block;
