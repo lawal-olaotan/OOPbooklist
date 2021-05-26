@@ -11681,13 +11681,19 @@ fieldset:disabled .btn {
 }
 
 .book__delete {
+  font-size: 24px;
   text-decoration: none;
   display: none;
   position: absolute;
   top: 1pc;
   right: 1pc;
-  font-size: 24px;
   color: #0B959E;
+}
+
+@media (max-width: 575.98px) {
+  .book__delete {
+    font-size: 32px;
+  }
 }
 
 .book__btn {
