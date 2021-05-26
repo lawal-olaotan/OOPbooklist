@@ -11965,6 +11965,7 @@ body {
 .primary {
   background-color: #0B959E;
   color: #FFF;
+  text-decoration: none;
 }
 
 .primary:hover {
