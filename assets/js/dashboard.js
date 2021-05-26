@@ -54,11 +54,13 @@ document.addEventListener('DOMContentLoaded', function(){
 
     for(let del of bookDel ){
         del.addEventListener('click', e=>{
-            let bookId = e.target.parentElement.parentElement.id;
+
+            let book = e.target.parentElement.parentElement
+            let bookId = book.id;
             bookId = {bookId};
+            book.parentElement.parentElement.remove();
             axios.post('/dashboard/deletebooks',bookId)
             .then(res => {
-
                 if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
                     window.location.replace("/dashboard/books") 
 
