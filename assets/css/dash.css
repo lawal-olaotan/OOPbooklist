@@ -11796,6 +11796,8 @@ fieldset:disabled .btn {
 @media (max-width: 575.98px) {
   .book__cta {
     font-size: .7rem;
+    background-color: #0B959E;
+    color: #FFF;
   }
 }
 

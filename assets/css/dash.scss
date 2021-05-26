@@ -199,7 +199,7 @@
         @include media-breakpoint-down(sm){
             font-size:32px;
         }
-        
+
         text-decoration: none;
         display: none;
         position: absolute;
@@ -292,6 +292,8 @@
 
         @include media-breakpoint-down(sm){
             font-size: .7rem;
+            background-color: #0B959E;
+            color: #FFF;
         }
 
         &:hover{

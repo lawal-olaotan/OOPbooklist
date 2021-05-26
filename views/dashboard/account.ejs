@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-              <a id="<%= user.email %>"  onclick="deleAcc(event)" href="#" type="button" class="btn primary ">Delete Account</a>
+              <button id="<%= user.email %>"  onclick="deleAcc(event)" type="button" class="btn primary ">Delete Account</button>
             </div>
           </div>
         </div>
@@ -82,7 +82,7 @@ function deleAcc(event){
    axios.post('/dashboard/delUser',data)
    .then( res => {
             if(typeof res.data.status !== 'undefined' && res.data.status === 'successful'){
-                window.location.replace("http://localhost:5505/") 
+                window.location.replace("/") 
             }
     })
 
