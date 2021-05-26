@@ -11925,18 +11925,16 @@ fieldset:disabled .btn {
   color: #FFF;
 }
 
-.book__toggleBtn {
-  font-size: 2rem;
-  margin-right: 3rem;
-  color: #0B959E;
-  background-color: transparent !important;
-  -webkit-box-shadow: none !important;
-          box-shadow: none !important;
-}
-
 @media (max-width: 575.98px) {
   .book__toggleBtn {
     display: block;
+    font-size: 2rem;
+    margin-right: 3rem;
+    color: #0B959E;
+    background-color: transparent !important;
+    -webkit-box-shadow: none !important;
+            box-shadow: none !important;
+    text-decoration: none;
   }
 }
 

@@ -415,14 +415,16 @@
     }
 
     &__toggleBtn{
-        font-size: 2rem;
-        margin-right: 3rem;
-        color: #0B959E;
-        background-color: transparent !important;
-        box-shadow: none !important;
+       
 
         @include media-breakpoint-down(sm){
           display: block;
+          font-size: 2rem;
+          margin-right: 3rem;
+          color: #0B959E;
+          background-color: transparent !important;
+          box-shadow: none !important;
+          text-decoration: none;
         }
         @include media-breakpoint-up(md){
           display: block;
