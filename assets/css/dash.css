@@ -11929,9 +11929,9 @@ fieldset:disabled .btn {
   font-size: 2rem;
   margin-right: 3rem;
   color: #0B959E;
-  background-color: transparent;
-  -webkit-box-shadow: none;
-          box-shadow: none;
+  background-color: transparent !important;
+  -webkit-box-shadow: none !important;
+          box-shadow: none !important;
 }
 
 @media (max-width: 575.98px) {
