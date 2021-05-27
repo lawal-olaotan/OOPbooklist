@@ -506,3 +506,44 @@ body{
       }
   }
 
+
+
+//   .placebook{
+//       width: 23.5% !important;
+//   }
+
+  .placehold{
+    height: 20px;
+    background-color:#706B6B;
+    opacity: 1;
+    width: 100%;
+    animation: fading 1.5s infinite;
+    -webkit-animation: fading 1.5s infinite;
+    }
+
+.bookanim {
+    animation: bookfade 1.5s infinite;
+    -webkit-animation: bookfade 1.5s infinite;
+}
+
+.halfblock{
+    max-width: 65%;
+}
+.parablock{
+    height: 30px !important;
+}
+
+@keyframes fading {
+    0%{
+        opacity: .1;
+    }
+    50%{
+        opacity: .2;
+    }
+    100%{
+        opacity: .1;
+    }
+}
+
+
+

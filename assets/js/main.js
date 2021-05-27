@@ -6,6 +6,7 @@ let googleBookKey = config.GOOGLE_KEY;
 const nextBtn = document.querySelector('#nextbtn'),
  mobileView = window.matchMedia("(max-width:450px)"),
  reviewcarol = document.querySelector('#review-carousel'),
+ placeholders = document.querySelectorAll('.placebook'),
  carol = document.querySelector('.main-carousel');
 
  let flicky,homefun;
@@ -52,9 +53,7 @@ class Homepagefuncs{
                                             </div>
                                     </div>
                                     <div class="card-body">
-                                        <div class="container flex-column flex-lg-row p-0">
-                                            <p class="card-title fw-bold booktitle">Title: ${data.book_details[0].title}</p>
-                                        </div>
+                                        <p class="card-title fw-bold booktitle">Title: ${data.book_details[0].title}</p>
                                         <p class="card-text bookauthor">Author: ${data.book_details[0].author}</p>
                                         <p class="card-text bookpara">${data.book_details[0].description}</p>
                                     </div>
@@ -75,12 +74,16 @@ class Homepagefuncs{
         
                data.map(label => {
     
-                carol.insertAdjacentHTML("afterbegin",cardTemp(label));
+              carol.insertAdjacentHTML("afterbegin",cardTemp(label))
+             
                 let authorkey = label.book_details[0].author;
                 let titleKey = label.book_details[0].title;
-                let descripKey = label.book_details[0].description;
 
                 getKeys(authorkey,titleKey); 
+
+                for(let preloader of  placeholders){
+                    preloader.remove();
+                }
     
                })
     
@@ -258,7 +261,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
     // loading our card section
-    homeFuncs.loadcard();
+    // homeFuncs.loadcard();
+
+    setTimeout(function (){
+        homeFuncs.loadcard()
+    },3000);
 
     homeFuncs.RenderWork();
 
