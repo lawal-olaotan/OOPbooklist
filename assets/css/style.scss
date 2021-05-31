@@ -521,16 +521,19 @@ body{
     -webkit-animation: fading 1.5s infinite;
     }
 
-.bookanim {
-    animation: bookfade 1.5s infinite;
-    -webkit-animation: bookfade 1.5s infinite;
-}
+
 
 .halfblock{
     max-width: 65%;
 }
 .parablock{
     height: 30px !important;
+}
+
+.rankblock{
+    height: 100px !important;
+    width: 75px !important;
+
 }
 
 @keyframes fading {

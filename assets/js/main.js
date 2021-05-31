@@ -263,9 +263,8 @@ document.addEventListener('DOMContentLoaded', function(){
     // loading our card section
     // homeFuncs.loadcard();
 
-    setTimeout(function (){
-        homeFuncs.loadcard()
-    },3000);
+   
+    homeFuncs.loadcard()
 
     homeFuncs.RenderWork();
 
