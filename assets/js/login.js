@@ -207,7 +207,7 @@ document.addEventListener('DOMContentLoaded',function(){
 
                         signUpFormBtn.innerHTML = '<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>';
                         setTimeout(function(){
-                            window.location.assign('http://localhost:5505/users/login');
+                            window.location.assign('https://bk-keeper.herokuapp.com/users/login');
                         },2000) 
                     }
                 }
